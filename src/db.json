@@ -1,0 +1,15 @@
+{
+    "users": [{
+        "id": 1,
+        "gmail": "json-server",
+        "username": "typicode",
+        "password": "12345678"
+    }],
+    "foodItems": [{
+        "id": 1,
+        "dish-name": "Meatpie",
+        "dish-image": "some-image",
+        "dish-price": 800
+    }]
+
+}
