@@ -75,6 +75,14 @@ form .row input:focus{
           box-sizing: border-box;
           
           }
+  .signup p, .signup h2, .login p, .login h2{
+  text-align:center;
+  color:var(--light);
+}
+.signup p a, .login p a{
+    color:var(--primary) !important;
+    
+  }
     .btn{
           color:var(--light);
           display:block; 

@@ -1,5 +1,6 @@
 <template>
   <div class="signup">
+<div v-if="loading"><Modal/></div>
     <h2>Sign Up</h2>
     <form class ="form" @submit.prevent="SubmitForm()" >
 
@@ -37,10 +38,19 @@
 </template>
 
 <script>
-export default {
+import * as firebase from "firebase/app";
+import { } from 'firebase/auth';
 
+  import axios from "axios"
+  import Modal from "../components/Modal.vue"
+export default {
+components:{
+  Modal
+},
 data(){
   return{
+    
+    loading:false,
   passwordErr:"Password must be at least 8 characters",
    confirmPasswordErr:"passwords does not match",
   password:"",
@@ -53,27 +63,46 @@ data(){
   confirmPasswordLengthQuery:false,
 }},
 mounted(){
+
     let userinfo = localStorage.getItem("user-info")
     if (userinfo){
-        this.$route.push("/")
+        this.$router.push("/")
     }},
 methods:{
 
-  SubmitForm(){
-
+ async SubmitForm(){
+let self = this;
 if(this.password.length < 8){
   this.passwordLengthQuery = true;
   setTimeout(() => {
     this.passwordLengthQuery = false;
   }, 6000);
 
-  if(this.confirmPassword !== this.password){
+ 
+}else if(this.confirmPassword !== this.password){
     this.confirmPasswordLengthQuery = true;
   setTimeout(() => {
   this.confirmPasswordLengthQuery = false;
   }, 6000);
-}
-}else{
+} 
+else{
+  
+  const API_KEY = ""
+  this.loading =true;
+axios.post(`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyD-uyV1-4f4wBRAobRvZGoFoRB3JB79LQM` , {
+    email: this.email,
+    password:this.password,
+    returnSecureToken :true
+  })
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+    localStorage.setItem("user-info", JSON.stringify(user))
+     self.$router.push({name:"Home"})
+ 
 
 }
   },
@@ -97,18 +126,5 @@ if(this.password.length < 8){
 </script>
 
 <style >
-.signup p, signup h2{
-  text-align:center;
-  color:var(--light);
-}
-.signup p a{
-    color:var(--primary) !important;
-    
-  }
 
-    
-
-
-        
- 
 </style>
