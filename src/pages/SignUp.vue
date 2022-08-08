@@ -38,11 +38,10 @@
 </template>
 
 <script>
-import * as firebase from "firebase/app";
-import { } from 'firebase/auth';
-
-  import axios from "axios"
-  import Modal from "../components/Modal.vue"
+import {  createUserWithEmailAndPassword } from "firebase/auth";
+import {firebaseAuth} from "../firebase.js"
+import axios from "axios"
+import Modal from "../components/Modal.vue"
 export default {
 components:{
   Modal
@@ -86,22 +85,20 @@ if(this.password.length < 8){
   }, 6000);
 } 
 else{
-  
-  const API_KEY = ""
-  this.loading =true;
-axios.post(`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyD-uyV1-4f4wBRAobRvZGoFoRB3JB79LQM` , {
-    email: this.email,
-    password:this.password,
-    returnSecureToken :true
-  })
-  .then(function (response) {
-    console.log(response);
-  })
-  .catch(function (error) {
-    console.log(error);
-  });
+  this.loading = true;
+createUserWithEmailAndPassword(firebaseAuth, this.email, this.password)
+  .then((userCredential) => {
+    const user = userCredential.user;
     localStorage.setItem("user-info", JSON.stringify(user))
      self.$router.push({name:"Home"})
+  
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+   
+  });
+    
  
 
 }

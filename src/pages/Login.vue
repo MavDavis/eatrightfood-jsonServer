@@ -23,6 +23,8 @@
 </template>
 
 <script>
+  import {  signInWithEmailAndPassword } from "firebase/auth";
+  import {firebaseAuth} from "../firebase.js"
 import Modal from "../components/Modal.vue"
 import axios from "axios"
 export default {
@@ -43,26 +45,25 @@ mounted(){
     }},
 methods:{
   Login(){
+
     this.loading = true;
     let self = this;
-  let url =`http://localhost:3000/users?gmail=${this.email}&password=${this.password}`
-  axios.get(url)
-  .then(function (response) {
-   if(response.status ===200 && response.data.length >0){
-    console.log(response);
-      localStorage.setItem("user-info", JSON.stringify(response.data[0]));
+
+
+signInWithEmailAndPassword(firebaseAuth, this.email, this.password)
+  .then((userCredential) => {
+    const user = userCredential.user;
+    console.log(user)
+    localStorage.setItem("user-info", JSON.stringify(user[0]));
     self.$router.push({ name: 'Home' });
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+  });
+      
      
-    }
-    else{
-      this.loading = false;
-      this.none = true;
-    }
-  })
-  .catch(function (error) {
-    
-    console.log(error);
-  })
+  
   },
      showConfirmPassword(){
    if(this.type==="password"){
