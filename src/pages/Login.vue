@@ -53,9 +53,10 @@ methods:{
 signInWithEmailAndPassword(firebaseAuth, this.email, this.password)
   .then((userCredential) => {
     const user = userCredential.user;
-    console.log(user)
-    localStorage.setItem("user-info", JSON.stringify(user[0]));
-    self.$router.push({ name: 'Home' });
+    console.log(user, this.name)
+    localStorage.setItem("user-info", ((JSON.stringify(user))))
+    
+    self.$router.push({ name: 'Home' })
   })
   .catch((error) => {
     const errorCode = error.code;

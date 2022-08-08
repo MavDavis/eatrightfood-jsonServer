@@ -89,7 +89,8 @@ else{
 createUserWithEmailAndPassword(firebaseAuth, this.email, this.password)
   .then((userCredential) => {
     const user = userCredential.user;
-    localStorage.setItem("user-info", JSON.stringify(user))
+    localStorage.setItem("user-info", (JSON.stringify(user)),this.name)
+    localStorage.setItem("name", this.firstname)
      self.$router.push({name:"Home"})
   
   })
