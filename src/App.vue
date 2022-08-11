@@ -10,7 +10,12 @@ export default{
   }
 }
 </script>
-<style>
+<style lang="scss">
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
 :root {
   --primary: #f6df19;
   --dark: #060d18;
@@ -27,6 +32,9 @@ body{
     text-align:left;
     padding:30px;
     border-radius:10px;
+}
+.signup {
+  
 }
     form .row{
       position:relative;

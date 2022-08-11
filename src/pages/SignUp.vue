@@ -92,6 +92,7 @@ createUserWithEmailAndPassword(firebaseAuth, this.email, this.password)
     localStorage.setItem("user-info", (JSON.stringify(user)),this.name)
     localStorage.setItem("name", this.firstname)
      self.$router.push({name:"Home"})
+      this.loading = true;
   
   })
   .catch((error) => {
@@ -124,5 +125,12 @@ createUserWithEmailAndPassword(firebaseAuth, this.email, this.password)
 </script>
 
 <style >
-
+.signup{
+  margin-top:2rem
+}
+@media(max-width:400px){
+  .signup{
+    margin-top:1rem;
+  }
+}
 </style>

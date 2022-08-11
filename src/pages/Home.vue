@@ -12,7 +12,7 @@ export default {
     if (userinfo){
        return
     }else{
-       this.$router.push("/SignUp")
+       this.$router.push("/Login")
     }
 }
 };

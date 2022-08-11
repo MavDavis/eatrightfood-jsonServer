@@ -57,6 +57,7 @@ signInWithEmailAndPassword(firebaseAuth, this.email, this.password)
     localStorage.setItem("user-info", ((JSON.stringify(user))))
     
     self.$router.push({ name: 'Home' })
+     this.loading = false;
   })
   .catch((error) => {
     const errorCode = error.code;
@@ -78,4 +79,12 @@ signInWithEmailAndPassword(firebaseAuth, this.email, this.password)
 </script>
 
 <style>
+.login{
+  margin-top:2rem
+}
+@media(max-width:400px){
+  .login{
+    margin-top:1rem;
+  }
+}
 </style>
