@@ -10,21 +10,24 @@ export default{
   }
 }
 </script>
+
+
 <style lang="scss">
 *{
   margin:0;
   padding:0;
   box-sizing:border-box;
+
 }
 :root {
   --primary: #f6df19;
   --dark: #060d18;
   --light: #f1f5f9;
+   --box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.2);
 }
 body{
-  background: var(--dark);
+ background:var(--light);
 }
-
  form{
     max-width:420px;
     margin:60px auto 30px;
@@ -33,9 +36,7 @@ body{
     padding:30px;
     border-radius:10px;
 }
-.signup {
-  
-}
+
     form .row{
       position:relative;
         display:block;
@@ -62,9 +63,7 @@ form .row p{
           border:none;
           border-bottom: 1px solid var(--primary);
           color:var(--dark);}
-
 form .row input:focus{
-
     outline: none !important;
       border: 1px solid var(--primary) !important;
       border-radius:8px;
@@ -76,7 +75,6 @@ form .row input:focus{
           top:20%;
           right:10%;
         }
-
         form .row .absolute input{
             transition:0.3s ease-out;
           background:transparent;
@@ -107,7 +105,6 @@ form .row input:focus{
           background:var(--primary);
           transition:0.3s ease-out;
           border-radius: 0 8px;
-
           
     }
     .btn:hover{
@@ -116,5 +113,4 @@ form .row input:focus{
           }
   
 </style>
-
 

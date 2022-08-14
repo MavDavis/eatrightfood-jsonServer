@@ -1,41 +1,53 @@
 <template>
-  <div class="navbar">
-    <div v-if="modal"><Modal/></div>
-    <div class="left-nav">
-      <div class="logo">Eatrightfood</div>
-    <div class="nav">
-      <ul>
-        <li><router-link to="/">Home</router-link></li>
-        <li><router-link to="/">Dishes</router-link></li>
-        <li><router-link to="/">Cart</router-link></li>
-    </ul>
-    </div>
-    </div>
-   <div class="right-nav">
-    <div class="profile">
-    <div class="circle">
-      <span>{{nameFirstdigit}}</span>
-     <span>{{name}}</span>
+ <header>
+  <div v-if="modal"><Modal/></div>
+        <a href="#" class="logo">UnisexWares</a>
+        <nav class="navbar">
+            <ul>
+        <li><router-link to="/">Home<i id="cart-basket" class="fas fa-home"></i></router-link></li>
+        <li><router-link to="/fashion">Fashions<i id="cart-basket" class="fas fa-shopping-cloth"></i></router-link></li>
+        <li><router-link to="/cart">Cart<i id="cart-basket" class="fas fa-shopping-cart"></i></router-link></li>
+            </ul>
+        </nav>
+        <div class="icons">
+          
+          <div class="profile">
+            <div >
+              <span class="circle">{{nameFirstdigit}}</span>
+     <span class="name">{{name}}</span>
     </div>
     
     <div class="state" >
       <li v-if="log" @click="logout">
       Logout
       </li>
-      <li v-else @click="login">Login</li>
+      <li v-else>Login</li>
   </div>
+     <div class="toggler" v-on:click="toggleSidebar">
+<div v-if="bars"><i  class="fa fa-bars bars-icons" >
+      </i></div>
+      <div v-else><i  class="fa fa-times bars-icons" >
+      </i></div>
+    
+     
+     </div>
   </div>
-   </div>
-  </div>
+ 
+        </div>
+    </header>
+ <div v-if="!bars">
+ <Mobilesidebar @loggedout="logout();toggleSidebar()" :log="log" :name="name" :nameFirstdigit ="nameFirstdigit"/></div>
 </template>
 
 <script setup>
 import {ref} from "vue"
+import Mobilesidebar from "./mobilesidebar.vue"
 import Modal from "./Modal.vue"
 import {signOut} from "firebase/auth"
 import { useRouter } from "vue-router";
 import {firebaseAuth} from "../firebase.js"
       const modal = ref(false)
+      const bars = ref(true)
    const log = ref(true);
       const router =useRouter()
       let name = ref(localStorage.getItem("name"))
@@ -45,10 +57,14 @@ import {firebaseAuth} from "../firebase.js"
    ref(localStorage.getItem("log-status") =="true" )
       (localStorage.setItem("log-status", log.value ))
   */
+const toggleSidebar = ()=>{
+  bars.value = !bars.value;
+ }
+
    const login =() =>{
     alert("Enter form details below")
-  }
 
+  }
     const logout = (() =>{
       log.value = false;
      modal.value = true;
@@ -61,52 +77,140 @@ import {firebaseAuth} from "../firebase.js"
           console.log(err)})
       
     })
-
 </script>
 
-<style scoped>
+<style lang = "scss" scoped>
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: var(--light);
+    padding: 1rem 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1000;
+    box-shadow: var(--box-shadow);
 
-.navbar{
-  display:flex;
-  width:100%;
-  position:sticky;
-  top:0;
-  left:0;
-  height:10vh;
-  background:var(--light);
-  color:var(--dark);
-  justify-content:space-between;
-  padding:1rem; 
+    .logo {
+    color: var(--dark);
+    font-size: 1.5rem;
+    text-decoration:none;
+    font-weight: bolder;
 }
-.navbar .logo{
-color:var(--dark);
-          display:inline-block;
-         padding:.8rem 0 ;
-          font-size:1em;
-          text-transform:uppercase;
-          letter-spacing:1px;
-          font-weight:bold;
+nav.navbar{
+  ul {
+    display: flex;
+    li{
+      list-style: none;
+
+ 
+a.router-link-active{
+   background-color: var(--primary);
+    color: #fff;
 }
-.navbar .nav ul{
-  display:flex;
+ a {
+  text-decoration:none;
+    display: flex;
+    font-size: 1.3rem;
+    border-radius: 0.5rem;
+    padding: 5px;
+    margin: 8px;
+    color: var(--dark);
+    transition:ease .5s;
+
+
+
+ i{
+  margin-left:5px;
+ }
+    &:hover {
+    background-color: var(--primary);
+    color: #fff;
 }
-.navbar ul li {
-  margin:0 10px;
-  list-style:none;
-  
-}.navbar ul li a {
-  color:var(--dark);
-  padding:.8rem 10px;
-  text-decoration:none ;
-  transition:0.2s ease-out;
 }
-.navbar ul li a:hover{
-background:#ccc;
 }
-.navbar .state li{
- cursor: pointer;
-  list-style:none;
 }
+   }
+   .icons{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+ 
+   .toggler{
+     i{
+      display:none;
+    }
+   }
+    .profile{
+display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+
+ .state{
+  margin-left:1rem;
+    li{
+      list-style:none;
+      font-weight:bold;
+      cursor:pointer;
+    }
+  }
+    .circle{
+      border-radius:50%;
+      border:2px solid var(--dark);
+      margin-right:8px;
+      padding:5px;
+    }
+    .name{
+transition:ease-out 1s;
+text-transform:uppercase;
+&:hover{
+  letter-spacing:1px;
+}
+    }
+    }
+
+    @media(max-width:850px){
+.toggler{
+  i{
+
+  display: flex;
+    font-size: 1.3rem;
+    border-radius: 0.5rem;
+    padding: 5px;
+    margin: 8px;
+    color: var(--dark);
+    transition:ease 1.5s;
+    cursor:pointer;
+}
+}
+.profile{
+  .name,.state{
+  display:none;
+  }
+  .circle{
+    margin-right:1rem;
+  }
+}
+    }
+     @media(max-width:280px){
+      .profile{
+        .circle{
+          display:none;
+        }
+      }
+     }
+   }
+    @media(max-width:850px){
+
+      nav.navbar{
+        display:none;
+      }
+    }
+}
+
 </style>
 
 /*
