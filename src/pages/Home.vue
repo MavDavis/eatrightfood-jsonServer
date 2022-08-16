@@ -1,18 +1,22 @@
 <template>
   <div class="home">
     <Slider />
-    <DisplayView :data="datas" :loading="loading"  />
-  </div>
+        <div v-if="!loading" >
+            <DisplayView :datas="datas" />
+            </div>
+      <div v-else>
+       <h1>Loading...</h1>
+      </div>
+ </div>
 </template>
 
 <script>
-
-import Slider from "../components/Slider.vue"
-import DisplayView from "../components/DisplayView.vue"
+import Slider from "../components/Slider.vue";
+import DisplayView from "../components/DisplayView.vue";
 export default {
   components: {
     Slider,
-DisplayView,
+    DisplayView,
   },
   mounted() {
     let userinfo = localStorage.getItem("user-info");
@@ -32,7 +36,7 @@ DisplayView,
   },
 
   created() {
-    fetch("https://fakestoreapi.com/products")
+    fetch("https://fakestoreapi.com/products?limit=6")
       .then((response) => response.json())
       .then((result) => {
         this.datas = result;
@@ -51,11 +55,9 @@ DisplayView,
   height: 100%;
   width: 100%;
 
-
   section {
-  position: relative;
-  width: 100%;
-  height: 100vh;
+    position: relative;
+    width: 100%;
   }
 }
 </style>

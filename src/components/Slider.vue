@@ -56,7 +56,7 @@ export default {
 
 <style lang="scss" scoped>
 section {
-
+ height:100vh;
   .Swiper {
     position: relative;
     width: 100%;
@@ -64,8 +64,8 @@ section {
 
     .slide {
       position: relative;
-      top: 5rem;
-      height: calc(100vh - 5rem);
+      top: 4rem;
+      height: calc(100vh - 4rem);
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
@@ -80,7 +80,7 @@ section {
       }
       .opacity {
         position: absolute;
-        background: rgba(6, 13, 24, 0.5);
+        background: rgba(6, 13, 24, 0.8);
         top: 0;
         left: 0;
         height: 100%;
