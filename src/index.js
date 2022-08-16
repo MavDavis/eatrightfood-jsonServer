@@ -3,6 +3,8 @@ import Home from "./pages/Home.vue";
 import About from "./pages/About.vue";
 import SignUp from "./pages/SignUp.vue";
 import Login from "./pages/Login.vue";
+import Cart from "./pages/Cart.vue";
+import Fashion from "./pages/Fashion.vue";
 const router = createRouter({
     history: createWebHistory(),
     routes: [{
@@ -24,6 +26,16 @@ const router = createRouter({
             path: "/SignUp",
             component: SignUp,
             name: "SignUp",
+        },
+        {
+            path: "/cart",
+            component: Cart,
+            name: "Cart",
+        },
+        {
+            path: "/fashion",
+            component: Fashion,
+            name: "fashion",
         },
     ],
 });

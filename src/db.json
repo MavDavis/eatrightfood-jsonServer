@@ -1,0 +1,66 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "gmail": "json-server",
+      "username": "typicode",
+      "password": "12345678"
+    },
+    {
+      "userName": "david",
+      "password": "david123",
+      "gmail": "david@gmail.com",
+      "id": 2
+    },
+    {
+      "userName": "Marvelous",
+      "password": "marv1234",
+      "gmail": "Marvelous@test.com",
+      "id": 3
+    },
+    {
+      "userName": "Marvelous",
+      "password": "marv1234",
+      "gmail": "Marvelous@test.com",
+      "id": 4
+    },
+    {
+      "userName": "Marvelous",
+      "password": "marv1234",
+      "gmail": "Marvelous@test.com",
+      "id": 5
+    },
+    {
+      "userName": "Marvelous",
+      "password": "marv1234",
+      "gmail": "Marvelous@test.com",
+      "id": 6
+    },
+    {
+      "userName": "Marvelous",
+      "password": "marv1234",
+      "gmail": "Marvelous@test.com",
+      "id": 7
+    },
+    {
+      "userName": "david2",
+      "password": "david2123",
+      "gmail": "david2@gmail.com",
+      "id": 8
+    },
+    {
+      "userName": "Tunde",
+      "password": "tunde123",
+      "gmail": "Tunde@gmail.com",
+      "id": 9
+    }
+  ],
+  "foodItems": [
+    {
+      "id": 1,
+      "dish-name": "Meatpie",
+      "dish-image": "some-image",
+      "dish-price": 800
+    }
+  ]
+}

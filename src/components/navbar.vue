@@ -22,6 +22,7 @@
         </li>
       </ul>
     </nav>
+  
     <div class="icons">
       <div class="profile">
         <div>
@@ -51,6 +52,7 @@
       :nameFirstdigit="nameFirstdigit"
     />
   </div>
+    <div @click="conl()">logged</div>
 </template>
 
 <script>
@@ -62,8 +64,11 @@ import {signOut} from "firebase/auth"
 import {firebaseAuth} from "../firebase.js"
 export default{
   setup(){
-let name = ref(localStorage.getItem("name"))
+let name = ref(localStorage.getItem("name") ?  (localStorage.getItem("name")) : "User")
 return{name}
+  },
+  components:{
+    Modal,Mobilesidebar
   },
   data(){
     return{
@@ -73,12 +78,13 @@ return{name}
 
     }
       },
+     
 computed:{
   Username(){
-    return  this.name.splice(0,1).toUpperCase() + this.name.splice(1, this.name.length)
+    return  this.name.substring(0,1).toUpperCase() + this.name.substring(1, this.name.length)
   },
   nameFirstdigit(){
-    this.name.splice(0,1).toUpperCase()
+   return  this.name.substring(0,1).toUpperCase()
   }
 },
       methods:{
@@ -89,15 +95,18 @@ toggleSidebar(){
     alert("Enter form details below")
 
   },
+   conl(){
+      console.log(this.name);
+     },
   logout(){
       this.log = false;
      this.modal = true;
 
-     
+    
 
       signOut(firebaseAuth).then(()=>{
          localStorage.removeItem("user-info")
-          router.push({name:"Login"})
+          this.$router.push({name:"Login"})
         this.modal = false;
         }).catch(err => {
           console.log(err)})

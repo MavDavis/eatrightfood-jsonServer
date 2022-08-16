@@ -31,7 +31,7 @@ body{
  form{
     max-width:420px;
     margin:60px auto 30px;
-    background: var(--light);
+    background: var(--dark);
     text-align:left;
     padding:30px;
     border-radius:10px;
@@ -42,7 +42,7 @@ body{
         display:block;
         }
         form .row label, form .row p{
-          color:var(--dark);
+          color:var(--light);
           display:inline-block;
           margin:15px 0 ;
           font-size:0.6em;
