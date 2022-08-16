@@ -75,10 +75,10 @@ return{name}
       },
 computed:{
   Username(){
-    return this.name.slice(0,1).toUpperCase() + this.name.slice(1, this.name.length)
+    return  this.name.splice(0,1).toUpperCase() + this.name.splice(1, this.name.length)
   },
   nameFirstdigit(){
-    this.name.slice(0,1).toUpperCase()
+    this.name.splice(0,1).toUpperCase()
   }
 },
       methods:{
