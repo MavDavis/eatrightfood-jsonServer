@@ -16,7 +16,7 @@
         </div>
         </div>
         
-      <input type="submit" class="btn"  value="SignUp">
+      <input type="submit" class="btn"  value="Login">
         </form>
         <p>Don't have an account yet? <router-link to="/SignUp">SignUp</router-link></p>
   </div>
