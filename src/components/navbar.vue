@@ -6,18 +6,18 @@
       <ul>
         <li>
           <router-link to="/"
-            >Home<i id="cart-basket" class="fas fa-home"></i
+            >Home<i class="fas fa-home"></i
           ></router-link>
         </li>
         <li>
           <router-link to="/fashion"
-            >Fashions<i id="cart-basket" class=""></i
+            >Fashions<i class=""></i
           ></router-link>
         </li>
 
         <li>
           <router-link to="/cart"
-            >Cart<i id="cart-basket" class="fas fa-shopping-cart"></i
+            >Cart<i class="fas fa-shopping-cart"></i
           ></router-link>
         </li>
       </ul>
@@ -124,7 +124,7 @@ header {
   left: 0;
   right: 0;
   background: var(--light);
-  padding: 1rem 7%;
+  padding: 1rem 5%;
   display: flex;
   align-items: center;
   justify-content: space-between;

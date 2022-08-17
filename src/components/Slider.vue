@@ -88,7 +88,7 @@ section {
       }
       .text {
         display: flex;
-        padding: 2rem;
+        padding: 4rem 5%;
 
         position: relative;
         flex-direction: column;
@@ -103,10 +103,17 @@ section {
           font-size: 3rem;
           margin-bottom: 1rem;
         }
-        @media (min-width: 500px) {
+        p{
+          max-width: 50%;
+          font-size: 1.6rem;
+        }
+        @media (max-width: 500px) {
           p {
-            max-width: 50%;
-            font-size: 1.56rem;
+            max-width: 90%;
+            font-size: 1.1rem;
+          }
+          h2{
+            font-size: 2rem;
           }
         }
       }

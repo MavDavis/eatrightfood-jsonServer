@@ -1,52 +1,52 @@
 <template>
-    <section>
-        <div class="gallery">
-            <div v-for="data in datas" :key="data.id" class="gallery-item">
-                <FlipCards :datas="datas" />
-            </div>
-        </div>
-    </section>
+  <section>
+    <div class="gallery">
+      <FlipCards
+        v-for="(data, index) in datas"
+        :key="data.id"
+        class="gallery-item"
+        :sendtochild="data"
+        :class-flex="index % 3"
+      />
+    </div>
+  </section>
 </template>
 
 <script>
 import FlipCards from "./flipCards.vue";
 export default {
-    name: "DisplayView",
-    props: ["datas", "loading"],
-    components: {
-        FlipCards,
-    },
-    methods: {
-        col() {
-            console.log(this.datas, this.loading);
-        },
-    },
+  name: "DisplayView",
+  props: ["datas"],
+  components: {
+    FlipCards,
+  },
+  methods: {},
 };
 </script>
 
 <style lang="scss">
 .gallery {
-    display: flex;
+  padding: 2rem 5%;
+  width: 100vw;
+  margin: 0 auto;
+  max-width: 1170px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-column-gap: 1.5rem;
+  grid-row-gap: 2rem;
 
-    .gallery-item {
-        flex: 1 0 24rem;
-        margin: 12px;
-        height: 240px;
-        margin: 1rem;
-        box-shadow: 0.3rem 0.4rem 0.4rem rgba(0, 0, 0, 0.4);
-        overflow: hidden;
+  .gallery-item {
+    margin: 12px auto;
+    height: 300px;
+    margin: 1rem;
+    box-shadow: 0.3rem 0.4rem 0.4rem rgba(0, 0, 0, 0.4);
+    overflow: hidden;
 
-        .gallery-image {
-            display: block;
-            width: 200px;
-            height: 200px;
-            object-fit: cover;
-            transition: transform 400ms ease-out;
-
-            &:hover {
-                transform: scale(1.15);
-            }
-        }
+    img {
+      display: block;
+      width: 100%;
+      min-height: 12rem;
     }
+  }
 }
 </style>

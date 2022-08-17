@@ -1,22 +1,33 @@
 <template>
   <div class="home">
     <Slider />
+   <heading :pTag="pTag"
+    :header="header"/>
         <div v-if="!loading" >
             <DisplayView :datas="datas" />
+
             </div>
       <div v-else>
        <h1>Loading...</h1>
       </div>
+        <heading pTag="Give your workout A new Style"
+               
+    header="Latest Wears(Sports Wears)"/>
+      <section-three/>
  </div>
 </template>
 
 <script>
+import Heading from "../components/heading.vue";
 import Slider from "../components/Slider.vue";
 import DisplayView from "../components/DisplayView.vue";
+import SectionThree from "../components/sectionThree.vue";
 export default {
   components: {
     Slider,
     DisplayView,
+    Heading,
+    SectionThree
   },
   mounted() {
     let userinfo = localStorage.getItem("user-info");
@@ -29,6 +40,8 @@ export default {
   },
   data() {
     return {
+      pTag:"The best offers for both clothes and accessories",
+      header:"Our best offers",
       datas: null,
       loading: true,
       error: null,
@@ -36,7 +49,7 @@ export default {
   },
 
   created() {
-    fetch("https://fakestoreapi.com/products?limit=6")
+    fetch("https://fakestoreapi.com/products?limit=8")
       .then((response) => response.json())
       .then((result) => {
         this.datas = result;
