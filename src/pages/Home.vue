@@ -14,6 +14,8 @@
                
     header="Latest Wears(Sports Wears)"/>
       <section-three/>
+      <heading header="Reviews" pTag="What Our customers Say"/>
+      <FAQ/>
  </div>
 </template>
 
@@ -22,13 +24,15 @@ import Heading from "../components/heading.vue";
 import Slider from "../components/Slider.vue";
 import DisplayView from "../components/DisplayView.vue";
 import SectionThree from "../components/sectionThree.vue";
+import FAQ from "../components/FAQ.vue";
 export default {
   components: {
     Slider,
     DisplayView,
     Heading,
-    SectionThree
-  },
+    SectionThree,
+    FAQ
+},
   mounted() {
     let userinfo = localStorage.getItem("user-info");
 

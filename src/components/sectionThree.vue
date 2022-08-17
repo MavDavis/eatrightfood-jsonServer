@@ -47,7 +47,7 @@ export default {
   width: 150px;
   margin: 16px 0;
   border: none;
-  background: var(--dark);
+  background: var(--primary);
   color: var(--light);
 padding: 9px 0;
 border-radius: 10px 0;

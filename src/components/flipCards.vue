@@ -2,7 +2,7 @@
   <div class="scene scene--card">
     <div
       class="card"
-      @mouseover="
+      @mouseenter="
         cardOne == 'start' ? (cardOne = 'flipped') : (cardOne = 'start')
       "
       v-bind:class="{ flipme: cardOne == 'flipped' }"
