@@ -7,7 +7,7 @@
     :modules="modules"
     :slides-per-view="display"
     :space-between="50"
-  :autoplay="3000"
+
     :pagination="{ clickable: true }"
     @swiper="onSwiper"
     @slideChange="onSlideChange"

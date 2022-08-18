@@ -57,11 +57,10 @@ export default {
 
 <style scoped lang="scss">
 .accessories {
-  height: 100vh;
   position: relative;
   top: 4rem;
-
- 
+  margin-bottom: 4rem;
+  height: fit-content;
   width: 100%;
 
   .slider {

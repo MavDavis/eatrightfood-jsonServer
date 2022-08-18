@@ -1,27 +1,44 @@
 <template>
   <div class="shop">
+    <div v-if="modal">
+      <Modal />
+    </div>
     <div v-if="!loading">
       <cartSlider :data="datas" :display="display" />
+      <FilterItems @fetchCategory="fetchCategory" />
     </div>
     <div v-else>Loading..</div>
+
+      <Items :CartItems="cartItems" />
+   
   </div>
 </template>
 
 <script>
 import cartSlider from "../components/cartSlider.vue";
 import DisplayViewVue from "../components/DisplayView.vue";
+import FilterItems from "../components/filter.vue";
+import Modal from "../components/Modal.vue";
+import Items from "../components/Items.vue";
 export default {
   components: {
+    Items,
     cartSlider,
+    Modal,
+    FilterItems,
     DisplayViewVue,
   },
   data() {
     return {
       datas: null,
       loading: true,
+      loading2: true,
       error: null,
       display: null,
-      cat:null,
+      cartItems: null,
+      cartCategory: null,
+      modal: false,
+      url: `https://fakestoreapi.com/products/`,
     };
   },
   mounted() {
@@ -34,12 +51,13 @@ export default {
     }
   },
   created() {
-      fetch('https://fakestoreapi.com/products/categories')
-            .then(res=>res.json())
-            .then(category=>{
-              this.cat = category
-              console.log(category, this.cat)})
+    fetch(this.url)
+      .then((res) => res.json())
+      .then((category) => {
 
+        this.cartItems = category;
+       
+      });
 
     window.addEventListener("resize", this.onResize);
     window.addEventListener("DOMContentLoaded", this.onResize);
@@ -52,6 +70,16 @@ export default {
       .catch((error) => console.log("error :" + error));
   },
   methods: {
+    fetchCategory(items) {
+      this.modal = true;
+      this.url = `https://fakestoreapi.com/products/category/${items}`;
+      fetch(this.url)
+        .then((res) => res.json())
+        .then((category) => {
+          this.cartItems = category;
+          this.modal = false;
+        });
+    },
     onResize() {
       if (window.innerWidth > 960) {
         this.display = 8;

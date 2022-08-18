@@ -60,7 +60,6 @@ export default {
   },
   methods:{
       onResize() {
-    console.log("hy");
       if(window.innerWidth > 960){
       this.display = 3
     }
