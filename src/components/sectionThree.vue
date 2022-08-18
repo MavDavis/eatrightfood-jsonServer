@@ -31,7 +31,7 @@ export default {
     align-items: center;
     justify-content: space-around;
     width:100vw ;
-    padding: 2rem 5%;
+    padding: 2rem 5% 1rem;
 }
 .col-2{
     flex-basis: 50%;
@@ -64,10 +64,14 @@ transition: ease-in-out .7s all;
     width:70%;
     margin-top: -20%;
 }
-@media (max-width:500px) {
+@media (max-width:800px) {
+    .row{flex-direction: column-reverse;}
     .col-2 .text{
         margin-top:0;
-        width: 90%;
+        width: 80%;
+    }
+    .col-2 .text p{
+        margin-top: 10px;
     }
 }
 </style>

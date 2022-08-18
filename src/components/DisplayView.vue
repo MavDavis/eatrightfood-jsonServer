@@ -35,17 +35,19 @@ export default {
   grid-column-gap: 1.5rem;
   grid-row-gap: 2rem;
 
-  .gallery-item {
+
+.gallery-item {
     margin: 12px auto;
     height: 300px;
+    max-width: 90%;
     margin: 1rem;
     box-shadow: 0.3rem 0.4rem 0.4rem rgba(0, 0, 0, 0.4);
-    overflow: hidden;
+    
 
     img {
       display: block;
       width: 100%;
-      min-height: 12rem;
+      height: 12rem;
     }
   }
 }

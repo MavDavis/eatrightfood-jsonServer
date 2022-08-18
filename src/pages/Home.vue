@@ -15,7 +15,7 @@
     header="Latest Wears(Sports Wears)"/>
       <section-three/>
       <heading header="Reviews" pTag="What Our customers Say"/>
-      <FAQ/>
+      <FAQ :display="display"/>
  </div>
 </template>
 
@@ -49,10 +49,13 @@ export default {
       datas: null,
       loading: true,
       error: null,
+      display: null
     };
   },
 
   created() {
+     window.addEventListener('resize', this.onResize);
+   window.addEventListener('DOMContentLoaded', this.onResize)
     fetch("https://fakestoreapi.com/products?limit=8")
       .then((response) => response.json())
       .then((result) => {
@@ -61,6 +64,21 @@ export default {
       })
       .catch((error) => console.log("error :" + error));
   },
+  methods:{
+      onResize() {
+    console.log("hy");
+      if(window.innerWidth > 960){
+      this.display = 3
+    }
+     if (window.innerWidth <  960) {
+      this.display = 2
+    } 
+     if(window.innerWidth < 600){
+      this.display = 1
+    }
+   
+  }
+  }
 };
 </script>
 
