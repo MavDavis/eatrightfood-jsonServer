@@ -33,15 +33,7 @@ export default {
     SectionThree,
     FAQ
 },
-  mounted() {
-    let userinfo = localStorage.getItem("user-info");
 
-    if (userinfo) {
-      return;
-    } else {
-      this.$router.push("/Login");
-    }
-  },
   data() {
     return {
       pTag:"The best offers for both clothes and accessories",
@@ -54,6 +46,8 @@ export default {
   },
 
   created() {
+  
+
      window.addEventListener('resize', this.onResize);
    window.addEventListener('DOMContentLoaded', this.onResize)
     fetch("https://fakestoreapi.com/products?limit=8")

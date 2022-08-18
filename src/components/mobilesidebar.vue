@@ -5,9 +5,9 @@
         <a href="#" class="logo">UnisexWares</a>
         
             <ul>
-        <li><router-link to="/">Home<i id="cart-basket" class="fas fa-home"></i></router-link></li>
-        <li><router-link to="/">Fashions<i id="cart-basket" class="fas fa-shopping-cloth"></i></router-link></li>
-        <li><router-link to="/">Cart<i id="cart-basket" class="fas fa-shopping-cart"></i></router-link></li>
+        <li @click="closeBars" v-for="route in routes" :key="route.to">
+        <router-link :to="route.to">{{route.name}}<i  :class="route.icon" class="fas"></i></router-link></li>
+      
             </ul>
        
        
@@ -36,9 +36,17 @@
 export default {
 name:"Mobilesidebar",
 props:["log", "nameFirstdigit","name"],
+data(){
+return{
+  routes:[{name:"Home", to:"/", icon:"fa-home"}, {name:"Shop", to:"/shop", icon:"fa-tshirt"}, {name:"Cart", to:"/cart", icon:"fa-shopping-cart"}]
+}
+},
 methods:{
   logout(){
 this.$emit('loggedout')
+  },
+  closeBars(){
+    this.$emit("closeBarIcon")
   }
 },
 }

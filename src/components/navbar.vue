@@ -47,6 +47,7 @@
         logout();
         toggleSidebar();
       "
+      @closeBarIcon="toggleSidebar"
       :log="log"
       :name="name"
       :nameFirstdigit="nameFirstdigit"
