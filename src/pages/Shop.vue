@@ -9,8 +9,7 @@
     </div>
     <div v-else>Loading..</div>
 
-      <Items :CartItems="cartItems" />
-   
+    <Items :CartItems="cartItems" />
   </div>
 </template>
 
@@ -54,9 +53,7 @@ export default {
     fetch(this.url)
       .then((res) => res.json())
       .then((category) => {
-
         this.cartItems = category;
-       
       });
 
     window.addEventListener("resize", this.onResize);
@@ -77,6 +74,7 @@ export default {
         .then((res) => res.json())
         .then((category) => {
           this.cartItems = category;
+
           this.modal = false;
         });
     },
