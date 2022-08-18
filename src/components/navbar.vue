@@ -10,8 +10,8 @@
           ></router-link>
         </li>
         <li>
-          <router-link to="/fashion"
-            >Fashions<i class=""></i
+          <router-link to="/shop"
+            >Shop<i class="fas fa-tshirt"></i
           ></router-link>
         </li>
 
