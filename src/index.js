@@ -5,6 +5,7 @@ import SignUp from "./pages/SignUp.vue";
 import Login from "./pages/Login.vue";
 import Cart from "./pages/Cart.vue";
 import Shop from "./pages/shop.vue";
+import DetailsPage from "./components/detailspage.vue"
 const router = createRouter({
     history: createWebHistory(),
     routes: [{
@@ -36,6 +37,11 @@ const router = createRouter({
             path: "/shop",
             component: Shop,
             name: "shop",
+        },
+        {
+            path: "/details/:id",
+            component: DetailsPage,
+            name: "DetailsPage",
         },
     ],
 });

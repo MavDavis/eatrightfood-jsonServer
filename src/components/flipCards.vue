@@ -10,13 +10,21 @@
       <div class="card__face card__face--front">
         <img :src="sendtochild.image" alt="" />
       </div>
-      <div class="card__face card__face--back" :class="{active : buttonEnable}">
-        <img :src="sendtochild.image" alt="">
-        <p><span v-if="!buttonEnable">$</span>{{sendtochild.price}}</p>
-        <span>{{sendtochild.ratings}}</span>
-        <button :disabled="buttonEnable"><span v-if="!buttonEnable">Details</span>
-        <span v-else>Countdown</span></button>
-
+      <div
+        class="card__face card__face--back"
+        :class="{ active: buttonEnable }"
+      >
+        <img :src="sendtochild.image" alt="" />
+        <p><span v-if="!buttonEnable">$</span>{{ sendtochild.price }}</p>
+        <span>{{ sendtochild.ratings }}</span>
+        <button :disabled="buttonEnable">
+          <span v-if="!buttonEnable">
+            <router-link :to="`/details/` + sendtochild.id">
+              Details</router-link
+            >
+          </span>
+          <span v-else>Countdown</span>
+        </button>
       </div>
     </div>
   </div>
@@ -30,9 +38,7 @@ export default {
       cardOne: "start",
     };
   },
-  methods: {
-    
-  },
+  methods: {},
 };
 </script>
 
@@ -42,7 +48,6 @@ body {
 }
 
 .scene {
-  
   position: relative;
   width: 100%;
   height: 100%;
@@ -70,49 +75,50 @@ body {
 
 .card__face--front {
   background: white;
-
- 
- }
+}
 
 .card__face--back {
   background: white;
   transform: rotateY(180deg);
 
-   img{
-    height:200px;
+  img {
+    height: 200px;
+  }
+  p {
+    display: block;
+    padding: 9px 0;
+    text-align: center;
+  }
+  button {
+    display: flex;
+    width: 80%;
+    margin: 8px auto;
+    border: none;
+    background: var(--dark);
+    color: var(--light);
+    padding: 9px 0;
+    border-radius: 10px;
+    justify-content: center;
+    transition: ease-in-out 0.7s all;
 
- 
-}
-p{
-  display: block;
-  padding: 9px 0;
-  text-align: center;
-}
-button{
-  display: flex;
-  width: 80%;
-  margin: 8px auto;
-  border: none;
-  background: var(--dark);
+a{
+  text-decoration: none;
   color: var(--light);
-padding: 9px 0;
-border-radius: 10px;
-cursor: pointer;
-justify-content: center;
-transition: ease-in-out .7s all;
-
-&:hover{
- background-image: linear-gradient(to right, var(--primary) , var(--dark));
+  width:100%;
+  position: relative;
 }
-}
-   &.active{
-    img{
+    &:hover {
+      background-image: linear-gradient(to right, var(--primary), var(--dark));
+    }
+  }
+  &.active {
+    img {
       max-height: 70%;
     }
-      button{
+    button {
       background: rgb(58, 57, 57);
-      }
     }
+  }
 }
 .flipme {
   transform: rotateY(180deg);
