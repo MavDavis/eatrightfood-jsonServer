@@ -10,7 +10,7 @@
         </div>
         <span><i class="fas fa-star"></i>{{ cartItem.rating.rate }}</span>
         <p>{{ cartItem.title }}</p>
-        <button @click="addTocart(cartItem)">Add to Cart</button>
+        <button @click="addTocart(cartItem)">Add to Cart <i class="fas fa-shopping-cart"></i></button>
       </div>
     </div>
   </div>
