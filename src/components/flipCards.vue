@@ -10,11 +10,12 @@
       <div class="card__face card__face--front">
         <img :src="sendtochild.image" alt="" />
       </div>
-      <div class="card__face card__face--back">
+      <div class="card__face card__face--back" :class="{active : buttonEnable}">
         <img :src="sendtochild.image" alt="">
-        <p>${{sendtochild.price}}</p>
+        <p><span v-if="!buttonEnable">$</span>{{sendtochild.price}}</p>
         <span>{{sendtochild.ratings}}</span>
-        <button>Details</button>
+        <button :disabled="buttonEnable"><span v-if="!buttonEnable">Details</span>
+        <span v-else>Countdown</span></button>
 
       </div>
     </div>
@@ -23,7 +24,7 @@
 
 <script>
 export default {
-  props: ["sendtochild"],
+  props: ["sendtochild", "buttonEnable"],
   data() {
     return {
       cardOne: "start",
@@ -79,6 +80,8 @@ body {
 
    img{
     height:200px;
+
+ 
 }
 p{
   display: block;
@@ -102,6 +105,14 @@ transition: ease-in-out .7s all;
  background-image: linear-gradient(to right, var(--primary) , var(--dark));
 }
 }
+   &.active{
+    img{
+      max-height: 70%;
+    }
+      button{
+      background: rgb(58, 57, 57);
+      }
+    }
 }
 .flipme {
   transform: rotateY(180deg);

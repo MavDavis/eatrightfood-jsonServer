@@ -4,9 +4,11 @@
       <FlipCards
         v-for="(data, index) in datas"
         :key="data.id"
+         :class="{ active: buttonEnable }"
         class="gallery-item"
         :sendtochild="data"
         :class-flex="index % 3"
+        :buttonEnable="buttonEnable"
       />
     </div>
   </section>
@@ -16,7 +18,7 @@
 import FlipCards from "./flipCards.vue";
 export default {
   name: "DisplayView",
-  props: ["datas"],
+  props: ["datas", "buttonEnable"],
   components: {
     FlipCards,
   },
@@ -49,6 +51,12 @@ export default {
       width: 100%;
       height: 12rem;
     }
+    &.active{
+  img{
+    position: relative;
+    height: 100%;
+  }
+}
   }
 }
 </style>
