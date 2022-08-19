@@ -1,7 +1,7 @@
 <template>
   <header>
     <div v-if="modal"><Modal /></div>
-    <a href="#" class="logo">UnisexWares</a>
+    <a href="#" class="logo">Mavs Store</a>
     <nav class="navbar">
       <ul>
         <li>

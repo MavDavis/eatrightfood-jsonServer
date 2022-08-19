@@ -20,7 +20,7 @@
 					<a href="#">Contact</a>
 				</p>
 
-				<p class="footer-company-name"> UnisexWears © 2022</p>
+				<p class="footer-company-name"> Mavs store © 2022</p>
 
 				<div class="footer-icons">
 

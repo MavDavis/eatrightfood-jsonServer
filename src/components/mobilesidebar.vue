@@ -2,7 +2,7 @@
   <aside>
 
 
-        <a href="#" class="logo">UnisexWares</a>
+        <a href="#" class="logo">Mavs store</a>
         
             <ul>
         <li @click="closeBars" v-for="route in routes" :key="route.to">

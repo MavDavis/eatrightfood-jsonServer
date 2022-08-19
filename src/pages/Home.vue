@@ -14,6 +14,7 @@
                
     header="Latest Wears(Sports Wears)"/>
       <section-three/>
+<sportswear/>
       <heading header="Reviews" pTag="What Our customers Say"/>
       <FAQ :display="display"/>
  </div>
@@ -25,8 +26,10 @@ import Slider from "../components/Slider.vue";
 import DisplayView from "../components/DisplayView.vue";
 import SectionThree from "../components/sectionThree.vue";
 import FAQ from "../components/FAQ.vue";
+import sportswear from "../components/sportswear.vue";
 export default {
   components: {
+    sportswear,
     Slider,
     DisplayView,
     Heading,
