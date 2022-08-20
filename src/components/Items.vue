@@ -13,13 +13,12 @@
           <span @click="like"><i class="fas fa-heart"></i></span>
         </div>
         <p>{{ cartItem.title }}</p>
-        <button v-if="buttonSpan" @click="addTocart(cartItem)">
+        <button v-if="!buttonSpan" @click="addTocart(cartItem)">
           Add to Cart <i class="fas fa-shopping-cart"></i>
         </button>
         <button v-else>
           <router-link :to="`/details/` + cartItem.id">
-            Addded! see details</router-link
-          >
+            Addded! see details</router-link>
         </button>
       </div>
     </div>
@@ -32,18 +31,20 @@ import { collection, addDoc, updateDoc, doc } from "firebase/firestore";
 import { db } from "../firebase";
 
 import heading from "./heading.vue";
+import { ref } from '@vue/reactivity';
 export default {
   props: ["CartItems"],
   components: {
     heading,
   },
-  setup(){
-    const buttonSpan =''
+  setup() {
+    const buttonSpan = ref(localStorage.getItem("button-span") === "true");
+    return { buttonSpan }
   },
   data() {
     return {
       cartArray: [],
-   
+
     };
   },
   methods: {
@@ -57,6 +58,8 @@ export default {
         quantity: 1,
       };
       this.cartArray.push(item);
+      this.buttonSpan = !this.buttonSpan;
+      localStorage.setItem("button-span", this.buttonSpan);
       localStorage.setItem("cart", JSON.stringify(this.cartArray));
     },
 
@@ -95,28 +98,34 @@ export default {
 
     .price {
       display: flex;
+
       h4 {
         margin-left: 16px;
       }
     }
+
     p,
     span,
     .price {
       padding: 10px 0 10px 16px;
     }
+
     span i {
       color: var(--primary);
       margin-right: 16px;
     }
+
     img {
       display: block;
       position: relative;
       width: 100%;
       max-height: 60%;
     }
+
     &:hover {
       transform: translateY(-5px);
     }
+
     button {
       display: flex;
       width: 80%;
