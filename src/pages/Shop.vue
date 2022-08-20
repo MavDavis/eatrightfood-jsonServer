@@ -53,12 +53,14 @@ export default {
     fetch(this.url)
       .then((res) => res.json())
       .then((category) => {
-        this.cartItems = category.map(cartItem => {
-          cartItem ={...cartItem, inCart :false}
+     let array = category.map(cartItem => {
+          cartItem ={...cartItem, inCart:false}
           return cartItem
-});
-
+        });
+             localStorage.setItem("Array", JSON.stringify(array))
+             this.cartItems = JSON.parse(localStorage.getItem("Array"))
       });
+
 
     window.addEventListener("resize", this.onResize);
     window.addEventListener("DOMContentLoaded", this.onResize);
@@ -76,11 +78,20 @@ export default {
       this.url = `https://fakestoreapi.com/products/category/${items}`;
       fetch(this.url)
         .then((res) => res.json())
-        .then((category) => {
+            .then((category) => {
           this.cartItems = category;
 
-          this.modal = false;
+     let array = category.map(cartItem => {
+          cartItem ={...cartItem, inCart:false}
+          return cartItem
         });
+             localStorage.setItem("Array", JSON.stringify(array))
+             this.cartItems = JSON.parse(localStorage.getItem("Array"))
+          this.modal = false;
+console.log(this.cartItems);
+      }
+        );
+
     },
     onResize() {
       if (window.innerWidth > 960) {

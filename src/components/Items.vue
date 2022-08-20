@@ -14,7 +14,7 @@
           <span @click="like"><i class="fas fa-heart"></i></span>
         </div>
      
-        <button v-if="!cartItem.inCart" @click="addTocart(cartItem, index)">
+        <button v-if="cartItem.inCart === false" @click="addTocart(cartItem, index)">
           Add to Cart <i class="fas fa-shopping-cart"></i>
         </button>
         <button v-else>
@@ -62,10 +62,25 @@ export default {
       };
      
   let storedCart = JSON.parse(localStorage.getItem("cart"));
-      if (storedCart) {
-        storedCart.push(item);
-        localStorage.setItem("cart", JSON.stringify(storedCart));
-      } else {
+  let Array = JSON.parse(localStorage.getItem("Array"));
+for (let product of Array){
+  if(product.id == cartItem.id){
+    product.inCart = true
+  }
+}
+localStorage.setItem("Array", JSON.stringify(Array))
+if (storedCart) {
+     let res = storedCart.find(item => item.id == cartItem.id)
+    console.log(res);
+    if(res === undefined){
+    
+      storedCart =[...storedCart, item] 
+              localStorage.setItem("cart", JSON.stringify(storedCart));
+
+      console.log(storedCart);
+    }
+    }
+     else {
         let array =[];
         array.push(item);
         localStorage.setItem("cart", JSON.stringify(array));
