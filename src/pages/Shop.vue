@@ -57,7 +57,7 @@ export default {
           cartItem ={...cartItem, inCart :false}
           return cartItem
 });
-console.log(this.cartItems);
+
       });
 
     window.addEventListener("resize", this.onResize);

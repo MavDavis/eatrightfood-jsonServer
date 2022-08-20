@@ -39,8 +39,8 @@ export default {
     heading,
   },
   setup() {
-    const buttonSpan = ref(localStorage.getItem("button-span") === "true");
-    return { buttonSpan }
+   
+ 
   },
   data() {
     return {
@@ -52,7 +52,7 @@ export default {
     addTocart(cartItem) {
       cartItem.inCart = true;
       let item = {
-        name: cartItem.title,
+      title: cartItem.title,
         id: cartItem.id,
         image: cartItem.image,
         description: cartItem.description,
@@ -60,10 +60,17 @@ export default {
         inCart:true,
         quantity: 1,
       };
-      this.cartArray.push(item);
-      this.buttonSpan = !this.buttonSpan;
-      localStorage.setItem("button-span", this.buttonSpan);
-      localStorage.setItem("cart", JSON.stringify(this.cartArray));
+     
+  let storedCart = JSON.parse(localStorage.getItem("cart"));
+      if (storedCart) {
+        storedCart.push(item);
+        localStorage.setItem("cart", JSON.stringify(storedCart));
+      } else {
+        let array =[];
+        array.push(item);
+        localStorage.setItem("cart", JSON.stringify(array));
+      }
+
     },
 
     async like() {

@@ -13,7 +13,6 @@
         <img :src="slide.image" alt="" />
       </swiper-slide>
     </swiper>
-   
   </section>
 </template>
 <script>
@@ -36,16 +35,10 @@ export default {
     Swiper,
     SwiperSlide,
   },
-  mounted() {
-  
-  },
+  mounted() {},
   setup() {
-    const onSwiper = (swiper) => {
-      console.log(swiper);
-    };
-    const onSlideChange = () => {
-      console.log("slide change");
-    };
+    const onSwiper = (swiper) => {};
+    const onSlideChange = () => {};
     return {
       onSwiper,
       onSlideChange,
@@ -66,8 +59,8 @@ export default {
   .slider {
     background: #fff;
     border: 1px solid var(--dark);
-    margin:  0;
-     padding: 2rem 5%;
+    margin: 0;
+    padding: 2rem 5%;
     width: 100%;
     display: flex;
 

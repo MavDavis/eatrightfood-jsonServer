@@ -25,7 +25,12 @@
             <p>{{ num }}</p>
             <span @click="numAdd">+</span>
           </div>
-          <button>Add to cart <i class="fas fa-shopping-cart"></i></button>
+          <button v-if="!InCart" @click="addToCart()">
+            Add to cart <i class="fas fa-shopping-cart"></i>
+          </button>
+          <button v-else @click="updateCart">
+            Update Cart <i class="fas fa-shopping-cart"></i>
+          </button>
         </div>
       </div>
     </div>
@@ -37,17 +42,41 @@
 
 <script>
 export default {
+  created() {
+    let cart = JSON.parse(localStorage.getItem("cart"));
+    if (cart) {
+      let eachCartItem = cart.find((item) => item.id == this.$route.params.id);
+      if (eachCartItem) {
+        this.addedtocart = true;
+
+        this.loading = false;
+        this.data = eachCartItem;
+        this.dataPrice = eachCartItem.price * this.num;
+        this.price = eachCartItem.price;
+      }
+    } else {
+      fetch(`https://fakestoreapi.com/products/${this.$route.params.id}`)
+        .then((res) => res.json())
+        .then((onedata) => {
+          this.data = { ...onedata, inCart: false };
+          this.addedtocart = false;
+          this.loading = false;
+          this.dataPrice = onedata.price * this.num;
+          this.price = onedata.price;
+        });
+    }
+  },
   data() {
     return {
+      InCart: false,
       num: 1,
       dataPrice: null,
       price: null,
       data: null,
       loading: true,
-      
     };
   },
-   mounted() {
+  mounted() {
     let userinfo = localStorage.getItem("user-info");
 
     if (userinfo) {
@@ -57,12 +86,38 @@ export default {
     }
   },
   methods: {
+    addToCart() {
+      this.InCart= true;
+      let item = {
+        title: this.data.title,
+        id: this.data.id,
+        image: this.data.image,
+        description: this.data.description,
+        price: this.data.price,
+        inCart: true,
+        quantity: this.num,
+      };
+      
+
+      let storedCart = JSON.parse(localStorage.getItem("cart"));
+      if (storedCart) {
+        storedCart.push(item);
+        localStorage.setItem("cart", JSON.stringify(storedCart));
+      } else {
+        let array =[];
+        array.push(item);
+        localStorage.setItem("cart", JSON.stringify(array));
+      }
+    },
+    updateCart() {
+      console.log("update");
+    },
     numRed() {
       if (this.num < 2) {
         return;
       } else {
         this.num--;
-        this.dataPrice =( this.dataPrice - this.price);
+        this.dataPrice = this.dataPrice - this.price;
       }
     },
     numAdd() {
@@ -70,25 +125,14 @@ export default {
       this.dataPrice = this.dataPrice + this.price;
     },
   },
-  created() {
-    
-    fetch(`https://fakestoreapi.com/products/${this.$route.params.id}`)
-      .then((res) => res.json())
-      .then((onedata) => {
-        this.loading = false;
-        this.data = onedata;
-        this.dataPrice = onedata.price * this.num;
-        this.price = onedata.price;
-      });
-  },
 };
 </script>
 
 <style lang="scss" scoped>
 .flex {
-    img{
-        border-radius: 9px;
-    }
+  img {
+    border-radius: 9px;
+  }
   flex-wrap: wrap;
 
   justify-content: space-around;
@@ -98,7 +142,6 @@ export default {
 
   .col-2 {
     flex-basis: 50%;
-
 
     &.right {
       flex-basis: 40%;
@@ -141,72 +184,72 @@ export default {
 
     &.left {
       flex-basis: 50%;
-        display: flex;
-        flex-direction: column;
+      display: flex;
+      flex-direction: column;
 
-        justify-content: center;
+      justify-content: center;
       h3 {
-        color:var(--primary);
+        color: var(--primary);
 
-        @media (max-width:600px) {
-            margin-top: 1.8rem;
+        @media (max-width: 600px) {
+          margin-top: 1.8rem;
         }
       }
 
       h2 {
-        color:var(--dark);
+        color: var(--dark);
         margin: 1rem 0;
       }
 
       p {
-        color:var(--dark);
-        line-height: 1.6rem;;
+        color: var(--dark);
+        line-height: 1.6rem;
       }
 
       .price {
-margin: 1rem 0;
+        margin: 1rem 0;
         p {
-            color:var(--dark);
+          color: var(--dark);
         }
       }
 
       .increment {
-                display: flex;
+        display: flex;
         background: var(--light);
-        color:var(--dark);
+        color: var(--dark);
         justify-content: space-between;
         border: 1px solid var(--dark);
-        padding:3px .3rem;
+        padding: 3px 0.3rem;
 
         span {
-            cursor: pointer;
-            color:var(--dark);
-            font-size: 1.8rem;
-            font-weight: bolder;
+          cursor: pointer;
+          color: var(--dark);
+          font-size: 1.8rem;
+          font-weight: bolder;
         }
 
         p {
-            color:var(--dark);
+          color: var(--dark);
         }
       }
 
       button {
-      display: flex;
-      width: 100%;
-      margin: 10px auto;
-      border: none;
-      background: var(--dark);
-      color: var(--light);
-      padding: 9px 0;
-      border-radius: 10px;
-      cursor: pointer;
-      justify-content: center;
-      transition: ease-in-out 0.7s all;
+        display: flex;
+        width: 100%;
+        margin: 10px auto;
+        border: none;
+        background: var(--dark);
+        color: var(--light);
+        padding: 9px 0;
+        border-radius: 10px;
+        cursor: pointer;
+        justify-content: center;
+        transition: ease-in-out 0.7s all;
 
-      &:hover {
-        background: var(--primary);
+        &:hover {
+          background: var(--primary);
+        }
       }
-    }
     }
   }
 
@@ -214,10 +257,9 @@ margin: 1rem 0;
     display: flex;
     flex-direction: column;
 
-    .col-2
-     {
+    .col-2 {
       flex-basis: 100%;
     }
-  }}
-
+  }
+}
 </style>
