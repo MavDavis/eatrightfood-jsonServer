@@ -84,9 +84,15 @@ export default {
      let array = category.map(cartItem => {
           cartItem ={...cartItem, inCart:false}
           return cartItem
-        });
-             localStorage.setItem("Array", JSON.stringify(array))
+        }); let storedArray = JSON.parse(localStorage.getItem("Array"))
+        console.log(storedArray);
+        if(storedArray){
+          this.cartItems = storedArray
+        }else{
+              localStorage.setItem("Array", JSON.stringify(array))
              this.cartItems = JSON.parse(localStorage.getItem("Array"))
+        }
+             
           this.modal = false;
 console.log(this.cartItems);
       }

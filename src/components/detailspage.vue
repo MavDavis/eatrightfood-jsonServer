@@ -97,20 +97,42 @@ export default {
         inCart: true,
         quantity: this.num,
       };
-      
+ 
+  let storedCart = JSON.parse(localStorage.getItem("cart"));
+  let Array = JSON.parse(localStorage.getItem("Array"));
+for (let product of Array){
+  if(product.id == this.data.id){
+    product.inCart = true
+  }
+}
+localStorage.setItem("Array", JSON.stringify(Array))
+if (storedCart) {
+     let res = storedCart.find(item => item.id == this.data.id)
+    console.log(res);
+    if(res === undefined){
+    
+      storedCart =[...storedCart, item] 
+              localStorage.setItem("cart", JSON.stringify(storedCart));
 
-      let storedCart = JSON.parse(localStorage.getItem("cart"));
-      if (storedCart) {
-        storedCart.push(item);
-        localStorage.setItem("cart", JSON.stringify(storedCart));
-      } else {
+      console.log(storedCart);
+    }
+    }
+     else {
         let array =[];
         array.push(item);
         localStorage.setItem("cart", JSON.stringify(array));
       }
     },
     updateCart() {
-      console.log("update");
+        let storedCart = JSON.parse(localStorage.getItem("cart"));
+for (let product of storedCart){
+  if(product.id == this.data.id){
+    product.inCart = true;
+    product.quantity = this.num;
+    product.price = this.dataPrice;
+  }}
+  localStorage.setItem("cart", JSON.stringify(storedCart))
+
     },
     numRed() {
       if (this.num < 2) {
@@ -173,6 +195,7 @@ export default {
           box-shadow: var(--box-shadow);
 
           img {
+            object-fit: contain;
             position: relative;
 
             height: 100%;
