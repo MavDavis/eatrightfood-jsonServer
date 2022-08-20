@@ -44,7 +44,17 @@ export default {
       price: null,
       data: null,
       loading: true,
+      
     };
+  },
+   mounted() {
+    let userinfo = localStorage.getItem("user-info");
+
+    if (userinfo) {
+      return;
+    } else {
+      this.$router.push("/Login");
+    }
   },
   methods: {
     numRed() {
@@ -136,6 +146,10 @@ export default {
         justify-content: center;
       h3 {
         color:var(--primary);
+
+        @media (max-width:600px) {
+            margin-top: 1.8rem;
+        }
       }
 
       h2 {

@@ -5,16 +5,18 @@
     <nav class="navbar">
       <ul>
         <li>
-          <router-link to="/"
-            >Home<i class="fas fa-home"></i
-          ></router-link>
+          <router-link to="/">Home<i class="fas fa-home"></i></router-link>
         </li>
         <li>
           <router-link to="/shop"
             >Shop<i class="fas fa-tshirt"></i
           ></router-link>
         </li>
-
+        <li>
+          <router-link to="/Contact"
+            >Contact<i class="fas fa-phone"></i
+          ></router-link>
+        </li>
         <li>
           <router-link to="/cart"
             >Cart<i class="fas fa-shopping-cart"></i
@@ -22,7 +24,7 @@
         </li>
       </ul>
     </nav>
-  
+
     <div class="icons">
       <div class="profile">
         <div>
@@ -53,70 +55,71 @@
       :nameFirstdigit="nameFirstdigit"
     />
   </div>
-    <div @click="conl()">logged</div>
+  <div @click="conl()">logged</div>
 </template>
 
 <script>
-import {ref} from "vue"
-import Mobilesidebar from "./mobilesidebar.vue"
-import Modal from "./Modal.vue"
-import {signOut} from "firebase/auth"
-
-import {firebaseAuth} from "../firebase.js"
-export default{
-  setup(){
-let name = ref(localStorage.getItem("name") ?  (localStorage.getItem("name")) : "User")
-return{name}
+import { ref } from "vue";
+import Mobilesidebar from "./mobilesidebar.vue";
+import Modal from "./Modal.vue";
+import { signOut } from "firebase/auth";
+import { firebaseAuth } from "../firebase.js";
+export default {
+  setup() {
+    let name = ref(
+      localStorage.getItem("name") ? localStorage.getItem("name") : "User"
+    );
+    return { name };
   },
-  components:{
-    Modal,Mobilesidebar
+  components: {
+    Modal,
+    Mobilesidebar,
   },
-  data(){
-    return{
-      modal :false,
-       bars : true,
-        log :true,
-
-    }
-      },
-
-     
-computed:{
-  Username(){
-    return  this.name.substring(0,1).toUpperCase() + this.name.substring(1, this.name.length)
+  data() {
+    return {
+      modal: false,
+      bars: true,
+      log: true,
+    };
   },
-  nameFirstdigit(){
-   return  this.name.substring(0,1).toUpperCase()
-  }
-},
-      methods:{
-toggleSidebar(){
-  this.bars = !this.bars
- },
- login(){
-    alert("Enter form details below")
 
+  computed: {
+    Username() {
+      return (
+        this.name.substring(0, 1).toUpperCase() +
+        this.name.substring(1, this.name.length)
+      );
+    },
+    nameFirstdigit() {
+      return this.name.substring(0, 1).toUpperCase();
+    },
   },
-   conl(){
+  methods: {
+    toggleSidebar() {
+      this.bars = !this.bars;
+    },
+    login() {
+      alert("Enter form details below");
+    },
+    conl() {
       console.log(this.name);
-     },
-  logout(){
+    },
+    logout() {
       this.log = false;
-     this.modal = true;
+      this.modal = true;
 
-    
-
-      signOut(firebaseAuth).then(()=>{
-         localStorage.removeItem("user-info")
-          this.$router.push({name:"Login"})
-        this.modal = false;
-        }).catch(err => {
-          console.log(err)})
-
- },
-
-
-    }}
+      signOut(firebaseAuth)
+        .then(() => {
+          localStorage.removeItem("user-info");
+          this.$router.push({ name: "Login" });
+          this.modal = false;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>

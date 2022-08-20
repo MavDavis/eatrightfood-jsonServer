@@ -8,26 +8,66 @@
           Price:
           <h4>${{ cartItem.price }}</h4>
         </div>
-        <span><i class="fas fa-star"></i>{{ cartItem.rating.rate }}</span>
+        <div class="row">
+          <span><i class="fas fa-star"></i>{{ cartItem.rating.rate }}</span>
+          <span @click="like"><i class="fas fa-heart"></i></span>
+        </div>
         <p>{{ cartItem.title }}</p>
-        <button @click="addTocart(cartItem)">Add to Cart <i class="fas fa-shopping-cart"></i></button>
+        <button v-if="buttonSpan" @click="addTocart(cartItem)">
+          Add to Cart <i class="fas fa-shopping-cart"></i>
+        </button>
+        <button v-else>
+          <router-link :to="`/details/` + cartItem.id">
+            Addded! see details</router-link
+          >
+        </button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { collection, addDoc, updateDoc, doc } from "firebase/firestore";
+
+import { db } from "../firebase";
+
 import heading from "./heading.vue";
 export default {
   props: ["CartItems"],
   components: {
     heading,
   },
-  methods:{
-    addTocart(item){
-console.log(item);
-    }
-  }
+  setup(){
+    const buttonSpan =''
+  },
+  data() {
+    return {
+      cartArray: [],
+   
+    };
+  },
+  methods: {
+    addTocart(cartItem) {
+      let item = {
+        name: cartItem.title,
+        id: cartItem.id,
+        image: cartItem.image,
+        description: cartItem.description,
+        price: cartItem.price,
+        quantity: 1,
+      };
+      this.cartArray.push(item);
+      localStorage.setItem("cart", JSON.stringify(this.cartArray));
+    },
+
+    async like() {
+      const washingtonRef = doc(db, "cities", "DC");
+
+      await updateDoc(washingtonRef, {
+        capital: true,
+      });
+    },
+  },
 };
 </script>
 

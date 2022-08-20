@@ -4,7 +4,7 @@
 
 			<div class="footer-left">
 
-				<h3>UnisexWears</h3>
+				<h3>Mavs store</h3>
 
 				<p class="footer-links">
 					<a href="#">Home</a>
