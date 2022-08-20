@@ -18,7 +18,7 @@
         </button>
         <button v-else>
           <router-link :to="`/details/` + cartItem.id">
-            Addded! see details</router-link>
+            Added! see details</router-link>
         </button>
       </div>
     </div>
@@ -138,7 +138,10 @@ export default {
       cursor: pointer;
       justify-content: center;
       transition: ease-in-out 0.7s all;
-
+ a{
+  color: #fff;
+  text-decoration: none;
+ }
       &:hover {
         background: var(--primary);
       }
