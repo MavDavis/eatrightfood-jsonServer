@@ -53,7 +53,11 @@ export default {
     fetch(this.url)
       .then((res) => res.json())
       .then((category) => {
-        this.cartItems = category;
+        this.cartItems = category.map(cartItem => {
+          cartItem ={...cartItem, inCart :false}
+          return cartItem
+});
+console.log(this.cartItems);
       });
 
     window.addEventListener("resize", this.onResize);

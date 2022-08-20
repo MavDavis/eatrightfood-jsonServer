@@ -1,9 +1,10 @@
 <template>
   <heading header="Shopping" pTag="Shop unique at affordable price" />
   <div class="gallery">
-    <div v-for="cartItem in CartItems" :key="cartItem.id" class="gallery-item">
+    <div v-for="(cartItem, index) in CartItems" :key="cartItem.id" class="gallery-item">
       <div class="">
         <img :src="cartItem.image" alt="" />
+           <p>{{ cartItem.title }}</p>
         <div class="price">
           Price:
           <h4>${{ cartItem.price }}</h4>
@@ -12,8 +13,8 @@
           <span><i class="fas fa-star"></i>{{ cartItem.rating.rate }}</span>
           <span @click="like"><i class="fas fa-heart"></i></span>
         </div>
-        <p>{{ cartItem.title }}</p>
-        <button v-if="!buttonSpan" @click="addTocart(cartItem)">
+     
+        <button v-if="!cartItem.inCart" @click="addTocart(cartItem, index)">
           Add to Cart <i class="fas fa-shopping-cart"></i>
         </button>
         <button v-else>
@@ -49,12 +50,14 @@ export default {
   },
   methods: {
     addTocart(cartItem) {
+      cartItem.inCart = true;
       let item = {
         name: cartItem.title,
         id: cartItem.id,
         image: cartItem.image,
         description: cartItem.description,
         price: cartItem.price,
+        inCart:true,
         quantity: 1,
       };
       this.cartArray.push(item);

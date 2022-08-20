@@ -71,8 +71,7 @@ export default {
     },
   },
   created() {
-    let localStoredCart = localStorage.getItem(JSON.parse("cart"))
-    localStoredCart
+    
     fetch(`https://fakestoreapi.com/products/${this.$route.params.id}`)
       .then((res) => res.json())
       .then((onedata) => {
