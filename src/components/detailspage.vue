@@ -4,19 +4,19 @@
       <div class="flex">
         <div class="right col-2">
           <div class="big-img">
-            <img :src="data.image" alt="" />
+            <img :src="datas.image" alt="" />
           </div>
           <div class="small-imgs">
-            <div class="small-img"><img :src="data.image" alt="" /></div>
-            <div class="small-img"><img :src="data.image" alt="" /></div>
-            <div class="small-img"><img :src="data.image" alt="" /></div>
-            <div class="small-img"><img :src="data.image" alt="" /></div>
+            <div class="small-img"><img :src="datas.image" alt="" /></div>
+            <div class="small-img"><img :src="datas.image" alt="" /></div>
+            <div class="small-img"><img :src="datas.image" alt="" /></div>
+            <div class="small-img"><img :src="datas.image" alt="" /></div>
           </div>
         </div>
         <div class="left col-2">
           <h3>Mavs Store</h3>
-          <h2>{{ data.title }}</h2>
-          <p>{{ data.description }}</p>
+          <h2>{{ datas.title }}</h2>
+          <p>{{ datas.description }}</p>
           <div class="price">
             <p>${{ dataPrice }}</p>
           </div>
@@ -25,7 +25,7 @@
             <p>{{ num }}</p>
             <span @click="numAdd">+</span>
           </div>
-          <button v-if="!InCart" @click="addToCart()">
+          <button v-if="!datas.inCart" @click="addToCart()">
             Add to cart <i class="fas fa-shopping-cart"></i>
           </button>
           <button v-else @click="updateCart">
@@ -44,25 +44,43 @@
 export default {
   created() {
     let cart = JSON.parse(localStorage.getItem("cart"));
-    if (cart) {
+    if (cart !== undefined) {
       let eachCartItem = cart.find((item) => item.id == this.$route.params.id);
-      if (eachCartItem) {
+      if (eachCartItem !== undefined) {
         this.addedtocart = true;
-
+console.log("from lc");
         this.loading = false;
-        this.data = eachCartItem;
+        this.datas = eachCartItem;
         this.dataPrice = eachCartItem.price * this.num;
         this.price = eachCartItem.price;
-      }
-    } else {
+      } else {
+
       fetch(`https://fakestoreapi.com/products/${this.$route.params.id}`)
         .then((res) => res.json())
         .then((onedata) => {
-          this.data = { ...onedata, inCart: false };
-          this.addedtocart = false;
           this.loading = false;
+          this.datas = { ...onedata, inCart: false };
+          this.addedtocart = false;
           this.dataPrice = onedata.price * this.num;
           this.price = onedata.price;
+                    console.log("from api");
+
+        });
+    }
+    } 
+    else {
+
+      fetch(`https://fakestoreapi.com/products/${this.$route.params.id}`)
+        .then((res) => res.json())
+        .then((onedata) => {
+          this.loading = false;
+          console.log(onedata);
+          this.datas = { ...onedata, inCart: false };
+          this.addedtocart = false;
+          this.dataPrice = onedata.price * this.num;
+          this.price = onedata.price;
+                    console.log("from api");
+
         });
     }
   },
@@ -72,7 +90,7 @@ export default {
       num: 1,
       dataPrice: null,
       price: null,
-      data: null,
+      datas: null,
       loading: true,
     };
   },
@@ -85,29 +103,30 @@ export default {
       this.$router.push("/Login");
     }
   },
+
   methods: {
     addToCart() {
       this.InCart= true;
       let item = {
-        title: this.data.title,
-        id: this.data.id,
-        image: this.data.image,
-        description: this.data.description,
-        price: this.data.price,
+        title: this.datas.title,
+        id: this.datas.id,
+        image: this.datas.image,
+        description: this.datas.description,
+        price: this.dataPrice,
         inCart: true,
         quantity: this.num,
       };
- 
+ console.log(item);
   let storedCart = JSON.parse(localStorage.getItem("cart"));
   let Array = JSON.parse(localStorage.getItem("Array"));
 for (let product of Array){
-  if(product.id == this.data.id){
+  if(product.id == this.datas.id){
     product.inCart = true
   }
 }
 localStorage.setItem("Array", JSON.stringify(Array))
 if (storedCart) {
-     let res = storedCart.find(item => item.id == this.data.id)
+     let res = storedCart.find(item => item.id == this.datas.id)
     console.log(res);
     if(res === undefined){
     
@@ -126,13 +145,12 @@ if (storedCart) {
     updateCart() {
         let storedCart = JSON.parse(localStorage.getItem("cart"));
 for (let product of storedCart){
-  if(product.id == this.data.id){
+  if(product.id == this.datas.id){
     product.inCart = true;
     product.quantity = this.num;
     product.price = this.dataPrice;
   }}
   localStorage.setItem("cart", JSON.stringify(storedCart))
-
     },
     numRed() {
       if (this.num < 2) {
