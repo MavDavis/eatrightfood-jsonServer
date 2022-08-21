@@ -9,7 +9,9 @@
 <div v-for="cartItem in CartItems" :key="cartItem.id">
 <EachItemInLc :data="cartItem" @remove="RemoveFromStorage"/>
 </div>
-<button @click="payMent">Make payments</button>
+<button>
+          <router-link to="/payment">Make payments</router-link>
+</button>
 </div>
 <div v-else>
   <div class="empty-cart">
@@ -129,7 +131,10 @@ padding: 8px 1rem;
 border-radius: 10px;
 border:none;
 background: var(--dark);
+a{
 color:var(--light);
+text-decoration: none;
+}
 text-transform: uppercase;
 transition: ease-out .4s;
 &:hover{

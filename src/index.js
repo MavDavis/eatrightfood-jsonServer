@@ -7,6 +7,7 @@ import Cart from "./pages/Cart.vue";
 import Shop from "./pages/shop.vue";
 import DetailsPage from "./components/detailspage.vue"
 import Contact from "./pages/Contact.vue"
+import Payment from './pages/Payment.vue'
 const router = createRouter({
     history: createWebHistory(),
     routes: [{
@@ -23,6 +24,11 @@ const router = createRouter({
             path: "/login",
             component: Login,
             name: "Login",
+        },
+        {
+            path:"/payment",
+            component: Payment,
+            name: "Payment",
         },
         {
             path: "/SignUp",
