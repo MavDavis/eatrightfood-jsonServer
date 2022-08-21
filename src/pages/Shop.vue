@@ -1,5 +1,6 @@
 <template>
   <div class="shop">
+
     <div v-if="modal">
       <Modal />
     </div>
@@ -20,6 +21,9 @@ import FilterItems from "../components/filter.vue";
 import Modal from "../components/Modal.vue";
 import Items from "../components/Items.vue";
 export default {
+    setup() {
+
+  },
   components: {
     Items,
     cartSlider,
@@ -50,6 +54,7 @@ export default {
     }
   },
   created() {
+   
     fetch(this.url)
       .then((res) => res.json())
       .then((category) => {
@@ -119,6 +124,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
 .shop {
   overflow: visible;
   position: relative;

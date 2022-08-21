@@ -18,9 +18,9 @@
           ></router-link>
         </li>
         <li>
-          <router-link to="/cart" class="cartbasket"
-            >Cart<i class="fas fa-shopping-cart"></i
-          ><p class="absolute">{{num}}</p>
+          <router-link to="/cart" class="basketcart"
+            >Cart<i class="fas fa-shopping-cart"></i>
+            <div class="num">{{num}}</div>
           </router-link>
         </li>
       </ul>
@@ -67,10 +67,11 @@ import { signOut } from "firebase/auth";
 import { firebaseAuth } from "../firebase.js";
 export default {
   setup() {
+    let quant = JSON.parse(localStorage.getItem("cart"));
+let num = ref(quant.length ? quant.length : 0)
     let name = ref(
       localStorage.getItem("name") ? localStorage.getItem("name") : "User"
     );
-    let num = JSON.parse(localStorage.getItem("cart")).length;
     return { name, num};
   },
   components: {
@@ -84,8 +85,7 @@ export default {
       log: true,
     };
   },
-  created(){
-  },
+  created() {},
 
   computed: {
     Username() {
@@ -166,17 +166,19 @@ header {
           color: var(--dark);
           transition: ease 0.5s;
 
-&.cartbasket{
-  position: relative;
-  height:100%;
-  p.absolute{
+
+&.basketcart{
+  position:relative;
+
+  .num{
     position:absolute;
-    background: var(--primary);
-    color:var(--light);
-    padding:6px;
-    border-radius: 5px;
-    right:-13px;
     top:-16px;
+    right:-13px;
+    background-color:var(--primary);
+    color:#fff;
+    border-radius:6px;
+    padding:6px;
+
   }
 }
           i {
@@ -266,5 +268,3 @@ header {
   }
 }
 </style>
-
-
