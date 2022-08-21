@@ -18,9 +18,10 @@
           ></router-link>
         </li>
         <li>
-          <router-link to="/cart"
+          <router-link to="/cart" class="cartbasket"
             >Cart<i class="fas fa-shopping-cart"></i
-          ></router-link>
+          ><p class="absolute">{{num}}</p>
+          </router-link>
         </li>
       </ul>
     </nav>
@@ -69,7 +70,8 @@ export default {
     let name = ref(
       localStorage.getItem("name") ? localStorage.getItem("name") : "User"
     );
-    return { name };
+    let num = JSON.parse(localStorage.getItem("cart")).length;
+    return { name, num};
   },
   components: {
     Modal,
@@ -81,6 +83,8 @@ export default {
       bars: true,
       log: true,
     };
+  },
+  created(){
   },
 
   computed: {
@@ -162,6 +166,19 @@ header {
           color: var(--dark);
           transition: ease 0.5s;
 
+&.cartbasket{
+  position: relative;
+  height:100%;
+  p.absolute{
+    position:absolute;
+    background: var(--primary);
+    color:var(--light);
+    padding:6px;
+    border-radius: 5px;
+    right:-13px;
+    top:-16px;
+  }
+}
           i {
             margin-left: 5px;
           }
