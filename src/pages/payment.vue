@@ -18,7 +18,7 @@
     <input type="text" v-model="lastName" />
   </div>
   <div class="form-submit">
-    <button type="submit" @click="payWithPaystack()"> Pay </button>
+    <button type="submit" @click="payWithPaystack()">Make Payment </button>
   </div>
 
 
