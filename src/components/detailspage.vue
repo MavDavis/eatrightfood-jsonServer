@@ -44,8 +44,25 @@
 export default {
   created() {
     let cart = JSON.parse(localStorage.getItem("cart"));
-    if (cart !== undefined) {
-      let eachCartItem = cart.find((item) => item.id == this.$route.params.id);
+    console.log(cart);
+    if (cart === null) {
+     
+      fetch(`https://fakestoreapi.com/products/${this.$route.params.id}`)
+        .then((res) => res.json())
+        .then((onedata) => {
+          this.loading = false;
+          console.log(onedata);
+          this.datas = { ...onedata, inCart: false };
+          this.addedtocart = false;
+          this.dataPrice = onedata.price * this.num;
+          this.price = onedata.price;
+                    console.log("from api");
+
+        });
+    
+    } 
+    else {
+       let eachCartItem = cart.find((item) => item.id == this.$route.params.id);
       if (eachCartItem !== undefined) {
         this.addedtocart = true;
 console.log("from lc");
@@ -67,22 +84,8 @@ console.log("from lc");
 
         });
     }
-    } 
-    else {
-
-      fetch(`https://fakestoreapi.com/products/${this.$route.params.id}`)
-        .then((res) => res.json())
-        .then((onedata) => {
-          this.loading = false;
-          console.log(onedata);
-          this.datas = { ...onedata, inCart: false };
-          this.addedtocart = false;
-          this.dataPrice = onedata.price * this.num;
-          this.price = onedata.price;
-                    console.log("from api");
-
-        });
     }
+
   },
   data() {
     return {
@@ -106,7 +109,7 @@ console.log("from lc");
 
   methods: {
     addToCart() {
-      this.InCart= true;
+      this.datas.inCart =true;
       let item = {
         title: this.datas.title,
         id: this.datas.id,
@@ -143,6 +146,7 @@ if (storedCart) {
       }
     },
     updateCart() {
+
         let storedCart = JSON.parse(localStorage.getItem("cart"));
 for (let product of storedCart){
   if(product.id == this.datas.id){
@@ -151,6 +155,7 @@ for (let product of storedCart){
     product.price = this.dataPrice;
   }}
   localStorage.setItem("cart", JSON.stringify(storedCart))
+  alert("updated to cart")
     },
     numRed() {
       if (this.num < 2) {
