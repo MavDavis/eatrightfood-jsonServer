@@ -53,14 +53,18 @@ export default {
     fetch(this.url)
       .then((res) => res.json())
       .then((category) => {
-     let array = category.map(cartItem => {
-          cartItem ={...cartItem, inCart:false}
-          return cartItem
+        let array = category.map((cartItem) => {
+          cartItem = { ...cartItem, inCart: false };
+          return cartItem;
         });
-             localStorage.setItem("Array", JSON.stringify(array))
-             this.cartItems = JSON.parse(localStorage.getItem("Array"))
+        let storedArray = JSON.parse(localStorage.getItem("Array"));
+        if (storedArray == undefined) {
+          localStorage.setItem("Array", JSON.stringify(array));
+          this.cartItems = JSON.parse(localStorage.getItem("Array"));
+        } else {
+          this.cartItems = storedArray;
+        }
       });
-
 
     window.addEventListener("resize", this.onResize);
     window.addEventListener("DOMContentLoaded", this.onResize);
@@ -78,26 +82,26 @@ export default {
       this.url = `https://fakestoreapi.com/products/category/${items}`;
       fetch(this.url)
         .then((res) => res.json())
-            .then((category) => {
+        .then((category) => {
           this.cartItems = category;
 
-     let array = category.map(cartItem => {
-          cartItem ={...cartItem, inCart:false}
-          return cartItem
-        }); let storedArray = JSON.parse(localStorage.getItem("Array"))
-        console.log(storedArray);
-        if(storedArray){
-          this.cartItems = storedArray
-        }else{
-              localStorage.setItem("Array", JSON.stringify(array))
-             this.cartItems = JSON.parse(localStorage.getItem("Array"))
-        }
-             
-          this.modal = false;
-console.log(this.cartItems);
-      }
-        );
+          let array = category.map((cartItem) => {
+            cartItem = { ...cartItem, inCart: false };
+            return cartItem;
+          });
+          let storedArray = JSON.parse(localStorage.getItem("Array"));
+          if (storedArray === undefined) {
+            localStorage.setItem("Array", JSON.stringify(array));
+            this.cartItems = JSON.parse(localStorage.getItem("Array"));
+          } else {
+            this.cartItems = storedArray.filter(
+              (item) => item.category === items
+            );
+         
+          }
 
+          this.modal = false;
+        });
     },
     onResize() {
       if (window.innerWidth > 960) {

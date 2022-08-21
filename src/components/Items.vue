@@ -1,10 +1,14 @@
 <template>
   <heading header="Shopping" pTag="Shop unique at affordable price" />
   <div class="gallery">
-    <div v-for="(cartItem, index) in CartItems" :key="cartItem.id" class="gallery-item">
+    <div
+      v-for="(cartItem, index) in CartItems"
+      :key="cartItem.id"
+      class="gallery-item"
+    >
       <div class="">
         <img :src="cartItem.image" alt="" />
-           <p>{{ cartItem.title }}</p>
+        <p>{{ cartItem.title }}</p>
         <div class="price">
           Price:
           <h4>${{ cartItem.price }}</h4>
@@ -13,13 +17,17 @@
           <span><i class="fas fa-star"></i>{{ cartItem.rating.rate }}</span>
           <span @click="like"><i class="fas fa-heart"></i></span>
         </div>
-     
-        <button v-if="cartItem.inCart === false" @click="addTocart(cartItem, index)">
+
+        <button
+          v-if="cartItem.inCart === false"
+          @click="addTocart(cartItem, index)"
+        >
           Add to Cart <i class="fas fa-shopping-cart"></i>
         </button>
         <button v-else>
           <router-link :to="`/details/` + cartItem.id">
-            Added! see details</router-link>
+            Added! see details</router-link
+          >
         </button>
       </div>
     </div>
@@ -32,60 +40,51 @@ import { collection, addDoc, updateDoc, doc } from "firebase/firestore";
 import { db } from "../firebase";
 
 import heading from "./heading.vue";
-import { ref } from '@vue/reactivity';
+import { ref } from "@vue/reactivity";
 export default {
   props: ["CartItems"],
   components: {
     heading,
   },
-  setup() {
-   
- 
-  },
+  setup() {},
   data() {
     return {
       cartArray: [],
-
     };
   },
   methods: {
     addTocart(cartItem) {
       cartItem.inCart = true;
       let item = {
-      title: cartItem.title,
+        title: cartItem.title,
         id: cartItem.id,
         image: cartItem.image,
         description: cartItem.description,
         price: cartItem.price,
-        inCart:true,
+        inCart: true,
         quantity: 1,
       };
-     
-  let storedCart = JSON.parse(localStorage.getItem("cart"));
-  let Array = JSON.parse(localStorage.getItem("Array"));
-for (let product of Array){
-  if(product.id == cartItem.id){
-    product.inCart = true
-  }
-}
-localStorage.setItem("Array", JSON.stringify(Array))
-if (storedCart) {
-     let res = storedCart.find(item => item.id == cartItem.id)
-    console.log(res);
-    if(res === undefined){
-    
-      storedCart =[...storedCart, item] 
-              localStorage.setItem("cart", JSON.stringify(storedCart));
 
-      console.log(storedCart);
-    }
-    }
-     else {
-        let array =[];
+      let storedCart = JSON.parse(localStorage.getItem("cart"));
+      let Array = JSON.parse(localStorage.getItem("Array"));
+      for (let product of Array) {
+        if (product.id == cartItem.id) {
+          product.inCart = true;
+        }
+      }
+      localStorage.setItem("Array", JSON.stringify(Array));
+      if (storedCart) {
+        let res = storedCart.find((item) => item.id == cartItem.id);
+        if (res === undefined) {
+          storedCart = [...storedCart, item];
+          localStorage.setItem("cart", JSON.stringify(storedCart));
+
+        }
+      } else {
+        let array = [];
         array.push(item);
         localStorage.setItem("cart", JSON.stringify(array));
       }
-
     },
 
     async like() {
@@ -163,10 +162,10 @@ if (storedCart) {
       cursor: pointer;
       justify-content: center;
       transition: ease-in-out 0.7s all;
- a{
-  color: #fff;
-  text-decoration: none;
- }
+      a {
+        color: #fff;
+        text-decoration: none;
+      }
       &:hover {
         background: var(--primary);
       }
