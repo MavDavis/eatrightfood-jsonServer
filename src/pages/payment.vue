@@ -33,9 +33,10 @@
 <script>
 import Amount from "../components/amount.vue";
 import { ref } from "@vue/reactivity";
+import Heading from "../components/heading.vue";
 export default {
   components: {
-    Amount,
+    Amount, Heading
   },
   computed: {
     sumItem() {
@@ -95,16 +96,20 @@ export default {
 <style scoped lang="scss">
 .paystackvue{
   position: relative;
+  min-height: 100%;
+  height: 100%;
   top:5rem;
   padding: 0 5%;
   display: flex;
-  margin: 10rem 0;
+  margin: 5rem 0 10rem;
   flex-wrap: wrap;
   width:100%;
   justify-content: space-between;
 
   section{
     flex-basis: 45%;
+    position: relative;
+    max-height: 100%;
 .paymentForm{
     max-width: 420px;
   text-align: left;
@@ -139,24 +144,26 @@ background: transparent;
   button{
      color: var(--light);
   display: block;
-  margin: 25px auto;
   border: none;
+  margin: 25px 0;
   font-size: 0.6em;
   text-transform: uppercase;
   letter-spacing: 1px;
   font-weight: bold;
   padding: 10px 1rem;
-  background: var(--primary);
+  background: var(--dark);
   transition: 0.3s ease-out;
   border-radius: 0 8px;
   }
 }
    
   }
+
+}
    @media(max-width: 600px){
 flex-direction: column-reverse;
 
     }
-}
+    section{flex-basis: 100%;}
 }
 </style>
