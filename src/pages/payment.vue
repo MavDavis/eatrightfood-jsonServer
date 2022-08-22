@@ -40,19 +40,15 @@ export default {
   },
   computed: {
     sumItem() {
-      if (this.localItems !== null) {
-        let sum = this.localItems.reduce((acc, item) => acc + item.price, 0);
+      const sum = this.localItems.reduce((acc, item) => acc + item.price, 0);
 
-        return sum;
-      } else {
-        let sum = 0;
-        return sum
-      }
+      return sum;
     },
   },
   setup() {
     const showEmailExplain = ref(false);
     const localItems = ref(JSON.parse(localStorage.getItem("cart")));
+
     const amount = ref("");
     const firstName = ref("");
     const lastName = ref("");
@@ -76,11 +72,12 @@ export default {
         amount: this.sumItem * 7000,
         ref: "" + Math.floor(Math.random() * 1000000000 + 1),
         onClose: function () {
-          alert("Window closed.");
         },
         callback: function (response) {
           let message = "Payment complete! Reference: " + response.reference;
           // alert(message);
+                    localStorage.setItem("receiptItems", JSON.stringify(this.localItems));
+
           localStorage.setItem("receipt", response.reference);
           localStorage.removeItem("cart");
           localStorage.removeItem("Array");
@@ -88,17 +85,18 @@ export default {
       });
 
       handler.openIframe();
+     this.$router.push("/User");
+
     },
   },
-  created() {
-    let cart = localStorage.getItem("cart");
+  mounted() {
+let cart = localStorage.getItem("cart");
 
     if (cart) {
       return;
     } else {
       this.$router.push("/User");
-    }
-  },
+    }  },
 };
 </script>
 
