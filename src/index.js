@@ -7,7 +7,7 @@ import Cart from "./pages/Cart.vue";
 import Shop from "./pages/Shop.vue";
 import DetailsPage from "./components/detailspage.vue"
 import Contact from "./pages/Contact.vue"
-import Payment from './pages/Payment.vue'
+import Payment from './pages/payment.vue'
 
 import User from './pages/User.vue'
 const router = createRouter({
