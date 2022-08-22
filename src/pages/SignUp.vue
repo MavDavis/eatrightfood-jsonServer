@@ -128,7 +128,6 @@ createUserWithEmailAndPassword(firebaseAuth, this.email, this.password)
 .signup{
   margin-top:2rem
 }
-@media(max-width:400px){
   .signup{
     margin-top:1rem;
   }
@@ -219,5 +218,5 @@ form .row .absolute input {
   border-radius: 8px 0;
   cursor: pointer;
 }
-}
+
 </style>
