@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <Slider />
+<Slider />
    <heading :pTag="pTag"
     :header="header"/>
         <div v-if="!loading" >

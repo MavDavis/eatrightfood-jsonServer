@@ -54,7 +54,11 @@ export default {
     }
   },
   created() {
-   
+   let  localStoredItem = JSON.parse(localStorage.getItem("Array"));
+   if(localStoredItem){
+              this.cartItems = localStoredItem;
+
+   }else{
     fetch(this.url)
       .then((res) => res.json())
       .then((category) => {
@@ -70,7 +74,7 @@ export default {
           this.cartItems = storedArray;
         }
       });
-
+   }
     window.addEventListener("resize", this.onResize);
     window.addEventListener("DOMContentLoaded", this.onResize);
     fetch("https://fakestoreapi.com/products")

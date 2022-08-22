@@ -68,7 +68,7 @@ import { firebaseAuth } from "../firebase.js";
 export default {
   setup() {
     let quant = JSON.parse(localStorage.getItem("cart"));
-let num = ref(quant.length ? quant.length : 0)
+let num = ref(quant ? quant.length : 0)
     let name = ref(
       localStorage.getItem("name") ? localStorage.getItem("name") : "User"
     );
