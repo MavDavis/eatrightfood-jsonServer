@@ -4,7 +4,7 @@ import About from "./pages/About.vue";
 import SignUp from "./pages/SignUp.vue";
 import Login from "./pages/Login.vue";
 import Cart from "./pages/Cart.vue";
-import Shop from "./pages/shop.vue";
+import Shop from "./pages/Shop.vue";
 import DetailsPage from "./components/detailspage.vue"
 import Contact from "./pages/Contact.vue"
 import Payment from './pages/Payment.vue'
