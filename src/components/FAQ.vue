@@ -22,7 +22,7 @@
             </div>
           </div>
           <p>{{ slide.post }}</p>
-          <img src="images/ceo ERF.jpg" alt="" />
+          <img :src="slide.img" alt="" />
         </div>
       </swiper-slide>
     </swiper>

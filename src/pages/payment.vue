@@ -18,7 +18,7 @@
         <label for="last-name">Last Name</label>
         <input type="text" v-model="lastName" />
       </div>
-      <div class="form-submit">
+      <div class="form-group">
         <button type="submit" @click="payWithPaystack()">Make Payment</button>
       </div>
     </form>
@@ -97,16 +97,60 @@ export default {
   position: relative;
   top:5rem;
   padding: 0 5%;
-  margin: 10rem 0;
   display: flex;
+  margin: 10rem 0;
   flex-wrap: wrap;
   width:100%;
-  min-height: 100vh;
   justify-content: space-between;
 
   section{
     flex-basis: 45%;
+.paymentForm{
+    max-width: 420px;
+  text-align: left;
+  border-radius: 10px;
+  .form-group{
+  input{
+background: transparent;
+  display: block;
+  padding: 13px 6px;
+  position:relative;
+  width: 100%;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 1px solid var(--primary);
+  color: var(--dark);
 
+  &:focus {
+  outline: none !important;
+  border: 1px solid var(--primary) !important;
+  border-radius: 8px;
+}
+  }
+  label{
+ color: var(--dark);
+  display: inline-block;
+  margin: 15px 0;
+  font-size: 0.6em;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: bold;
+  }
+  button{
+     color: var(--light);
+  display: block;
+  margin: 25px auto;
+  border: none;
+  font-size: 0.6em;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: bold;
+  padding: 10px 1rem;
+  background: var(--primary);
+  transition: 0.3s ease-out;
+  border-radius: 0 8px;
+  }
+}
    
   }
    @media(max-width: 600px){
@@ -114,5 +158,5 @@ flex-direction: column-reverse;
 
     }
 }
-
+}
 </style>

@@ -6,8 +6,14 @@
     </div>
     <p class="fbas fs">${{ data.price }}</p>
     <p class="fbas fs">{{ data.quantity }}</p>
-    <div class="remove fbas fs" @click="removeItem(data.id)">
-      <i class="fas fa-trash"></i>
+    <div class="remove fbas fs" >
+      <i class="fas fa-trash" @click="removeItem(data.id)"></i>
+     
+        <router-link :to="`/details/` + data.id">
+         <i class="fas fa-pen"></i>
+        </router-link
+            >
+    
     </div>
   </div>
 </template>
@@ -43,6 +49,18 @@ export default {
     align-items: center;
     margin: 1rem 0;
 
+&.remove{
+  display: flex;
+  justify-content: space-around;
+  a{
+    color:var(--dark);
+    transition:ease .3s;
+
+    &:hover{
+      color:var(--primary)
+    }
+  }
+}
 
     &.desc {
       max-width: 25%;
@@ -61,14 +79,20 @@ export default {
 
         i{
             font-size: 1.6rem;
+             transition:ease .3s;
+
+    &:hover{
+      color:var(--primary)
+    }
+  
         }
 
         @media(max-width: 500px){
                         font-size: 1rem;
 
         }
-        @media(max-width:290px){
-            font-size: .8rem;
+        @media(max-width:450px){
+            font-size: 1rem;
 
  i{
         font-size: .8rem;

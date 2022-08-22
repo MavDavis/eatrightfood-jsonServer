@@ -4,7 +4,7 @@
     <h3>Description</h3>
     <h3>Price</h3>
     <h3>Quantity</h3>
-    <h3>Delete</h3>
+    <h3>Del/Edit</h3>
   </div>
 <div v-for="cartItem in CartItems" :key="cartItem.id">
 <EachItemInLc :data="cartItem" @remove="RemoveFromStorage"/>
