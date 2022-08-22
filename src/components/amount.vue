@@ -1,6 +1,9 @@
 <template>
-<h1>HelloWorld</h1>
-<input type="number"  value="{{sumItem}}"/>
+<div v-for="data in datas" :key="data.id">
+<h4>{{data.title.slice(0,15)}}..</h4>
+<p>${{data.price}}</p>
+<p>{{data.quantity}}</p>
+</div>
 </template>
 
 <script>
@@ -8,6 +11,12 @@ import { ref } from '@vue/reactivity';
 export default {
     name:"Amount",
     props:["amount"],
+    data(){
+      return{
+        datas:[],
+        
+      }
+    },
   setup() {
 
   },
@@ -20,6 +29,8 @@ return(sum);
     }
   },
   created(){
+        const localItems = ref(JSON.parse(localStorage.getItem("cart")));
+this.datas = localItems
   }
 };
 </script>
