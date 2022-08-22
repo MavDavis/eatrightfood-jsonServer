@@ -66,27 +66,31 @@ section {
       position: relative;
       top: 4rem;
       height: calc(100vh - 4rem);
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
       &.slide1 {
-        background-image: url("../assets/blackWomanShopping.jpg");
+        background: url("../assets/blackWomanShopping.jpg") no-repeat center center ;
+;
       }
       &.slide2 {
-        background-image: url("../assets/femaleModel.jpg");
+        background: url("../assets/femaleModel.jpg")     no-repeat center center ;
+
       }
       &.slide3 {
-        background-image: url("../assets/guyModel.jpg");
+        background: url("../assets/guyModel.jpg")     no-repeat center center ;
+
       }
       .opacity {
         position: absolute;
         background: rgba(6, 13, 24, 0.8);
         top: 0;
         left: 0;
-        height: 100%;
+       height: 100%;
         width: 100%;
-      }
-      .text {
+      } 
+     .text {
         display: flex;
         padding: 4rem 5%;
 
@@ -116,7 +120,7 @@ section {
             font-size: 2rem;
           }
         }
-      }
+      } 
     }
   }
 }
