@@ -102,18 +102,18 @@ export default {
   padding: 0 5%;
   display: flex;
   margin: 5rem 0 10rem;
-  flex-wrap: wrap;
   width:100%;
   justify-content: space-between;
 
   section{
-    flex-basis: 45%;
+    width:45%;
     position: relative;
     max-height: 100%;
 .paymentForm{
     max-width: 420px;
   text-align: left;
   border-radius: 10px;
+  width:100%;
   .form-group{
   input{
 background: transparent;
@@ -160,10 +160,10 @@ background: transparent;
   }
 
 }
-   @media(max-width: 600px){
+   @media(max-width: 850px){
 flex-direction: column-reverse;
 
     }
-    section{flex-basis: 100%;}
+    section{width: 100%;}
 }
 </style>
