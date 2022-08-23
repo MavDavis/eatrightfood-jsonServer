@@ -55,6 +55,8 @@ export default {
     },
     login() {
       this.$router.push({ name: "Login" });
+            this.$emit("closeBarIcon");
+
     },
   },
 };
