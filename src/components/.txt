@@ -1,2 +1,2 @@
-1. See that cart shows empty when deleted all items, reload the page.
-2. update navCartQuantity on added item to cart
+install bootstrap.
+use firebase to 

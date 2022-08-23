@@ -14,9 +14,7 @@
         <heading pTag="Give your workout A new Style"
                
     header="Latest Wears(Sports Wears)"/>
-    
-    {{$store.state.count}}
-    <button @click="$store.commit('increment')">hy</button>
+  
       <section-three/>
 <sportswear/>
       <heading header="Reviews" pTag="What Our customers Say"/>
