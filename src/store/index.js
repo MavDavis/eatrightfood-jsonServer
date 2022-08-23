@@ -3,9 +3,9 @@ export default createStore({
   state() {
     return {
       count: localStorage.getItem("log") === "true",
-      cartQuant: localStorage.getItem("cartQuant")
-        ? localStorage.getItem("cartQuant")
-        : 0,
+      cartQuant:  JSON.parse(localStorage.getItem("cart"))
+      ?  JSON.parse(localStorage.getItem("cart")).reduce((acc, item) => acc + item.quantity, 0)
+      : 0,
     };
   },
   mutations: {
@@ -14,15 +14,15 @@ export default createStore({
       localStorage.setItem("log", state.count);
     },
     increaseCartQuant(state){
-        state.cartQuant++
-        localStorage.setItem("cartQuant", state.cartQuant)
+    let item = JSON.parse(localStorage.getItem("cart")).reduce((acc, item) => acc + item.quantity, 0)
+state.cartQuant = item;
     },
     decreaseCartQuant(state){
-        if(state.cartQuant > 1){
-            state.cartQuant--
-        }else return
-        localStorage.setItem("cartQuant", state.cartQuant)
+        let item = JSON.parse(localStorage.getItem("cart")).reduce((acc, item) => acc + item.quantity, 0)
+state.cartQuant = item;
 
     },
   },
 });
+
+

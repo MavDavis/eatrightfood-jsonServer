@@ -21,14 +21,14 @@
             <p>${{ dataPrice }}</p>
           </div>
           <div class="increment">
-            <span @click="numRed(); $store.commit('decreaseCartQuant')">-</span>
+            <span @click="numRed()">-</span>
             <p>{{ num }}</p>
-            <span @click="numAdd(); $store.commit('increaseCartQuant')">+</span>
+            <span @click="numAdd()">+</span>
           </div>
-          <button v-if="!datas.inCart" @click="addToCart()">
+          <button v-if="!datas.inCart" @click="addToCart(); $store.commit('decreaseCartQuant')">
             Add to cart <i class="fas fa-shopping-cart"></i>
           </button>
-          <button v-else @click="updateCart">
+          <button v-else @click="updateCart(); $store.commit('decreaseCartQuant')">
             Update Cart <i class="fas fa-shopping-cart"></i>
           </button>
         </div>
