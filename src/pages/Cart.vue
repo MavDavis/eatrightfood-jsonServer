@@ -1,5 +1,5 @@
 <template>
-<div v-if="!loading">
+<div v-if="$store.state.cartQuant != 0">
 <div class="head">
     <h3>Description</h3>
     <h3>Price</h3>
