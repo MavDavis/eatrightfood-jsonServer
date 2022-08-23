@@ -20,7 +20,7 @@ export default createStore({
     decreaseCartQuant(state){
         if(state.cartQuant > 1){
             state.cartQuant--
-        }else{return}
+        }else return
         localStorage.setItem("cartQuant", state.cartQuant)
 
     },
