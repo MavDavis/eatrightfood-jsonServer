@@ -17,8 +17,8 @@
       </div>
 
       <div class="state">
-        <li v-if="log" @click="logout">Logout</li>
-        <li v-else>Login</li>
+     <li v-if="$store.state.count" @click="logout(); $store.commit('changeLoggedInState')">Logout</li>
+          <li v-else>Login</li>
       </div>
     </div>
   </aside>
