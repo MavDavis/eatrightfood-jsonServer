@@ -34,7 +34,7 @@
         </div>
 
         <div class="state">
-          <li v-if="log" @click="logout">Logout</li>
+          <li v-if="log" @click="logout(); $store.commit('changeLoggedInState')">Logout</li>
           <li v-else>Login</li>
         </div>
         <div class="toggler" v-on:click="toggleSidebar">
@@ -112,7 +112,6 @@ let num = ref(quant ? quant.length : 0)
     },
     logout() {
       this.modal = true;
-      localStorage.setItem("log", false)
 
       signOut(firebaseAuth)
         .then(() => {

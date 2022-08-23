@@ -4,20 +4,7 @@ import App from "./App.vue";
 import Carousel3d from 'vue-carousel-3d';
 
 
-import { createStore } from "vuex";
-const store = createStore({
-    state() {
-        return {
-            count: 0,
-        };
-    },
-    mutations: {
-        increment(state) {
-            state.count++;
-        },
-    },
-});
+import createStore from "./store"
 
 
-
-createApp(App).use(router).use(store).use(Carousel3d).mount("#app");
+createApp(App).use(router).use(createStore).use(Carousel3d).mount("#app");

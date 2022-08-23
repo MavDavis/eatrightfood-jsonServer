@@ -2,7 +2,7 @@
 
   <div class="login">
     <h2>Login</h2>
-     <form  class ="form" @submit.prevent="Login()">
+     <form  class ="form" @submit.prevent="Login(); $store.commit('changeLoggedInState')">
      <div v-if="loading"><Modal/></div>
     <div class="row">
    <label for="email">Email</label>
@@ -48,8 +48,6 @@ methods:{
 
     this.loading = true;
     let self = this;
-      localStorage.setItem("log", true)
-
 
 signInWithEmailAndPassword(firebaseAuth, this.email, this.password)
   .then((userCredential) => {
