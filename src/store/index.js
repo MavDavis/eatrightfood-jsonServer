@@ -2,7 +2,9 @@ import { createStore } from "vuex";
 export default createStore({
     state() {
         return {
-            count: true,
+            count: localStorage.getItem("log") === "true",
+            cartQuant: 0,
+
         };
     },
     mutations: {

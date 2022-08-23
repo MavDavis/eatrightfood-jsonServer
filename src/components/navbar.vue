@@ -34,7 +34,7 @@
         </div>
 
         <div class="state">
-          <li v-if="log" @click="logout(); $store.commit('changeLoggedInState')">Logout</li>
+          <li v-if="$store.state.count" @click="logout(); $store.commit('changeLoggedInState')">Logout</li>
           <li v-else>Login</li>
         </div>
         <div class="toggler" v-on:click="toggleSidebar">
@@ -72,10 +72,8 @@ let num = ref(quant ? quant.length : 0)
     let name = ref(
       localStorage.getItem("name") ? localStorage.getItem("name") : "User"
     );
-     let log = ref(
-      localStorage.getItem("log")  === "true"
-    );
-    return { name, num, log};
+    
+    return { name, num};
   },
   components: {
     Modal,

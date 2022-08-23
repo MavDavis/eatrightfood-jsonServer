@@ -2,6 +2,8 @@
   <div class="signup">
 <div v-if="loading"><Modal/></div>
     <h2>Sign Up</h2>
+            <p class="phead">Already Have account? <router-link to="/login">Login</router-link></p>
+
     <form class ="form" @submit.prevent="SubmitForm()" >
 
 <div class="row">
@@ -33,7 +35,6 @@
         
       <input type="submit" class=" btn"  value="SignUp"  >
         </form>
-        <p>Already Have account? <router-link to="/login">Login</router-link></p>
   </div>
 </template>
 
@@ -192,15 +193,14 @@ form .row .absolute input {
 }
 .signup p,
 .signup h2,
-.login p,
-.login h2 {
+.login p {
   text-align: center;
   color: var(--dark);
-}
-.signup p a,
-.login p a {
+}.p
+.signup p a {
   color: var(--primary) !important;
 }
+
 .btn {
   color: var(--light);
   display: block;
