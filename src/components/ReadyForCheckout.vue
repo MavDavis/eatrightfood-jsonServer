@@ -7,7 +7,7 @@
     <p class="fbas fs">${{ data.price }}</p>
     <p class="fbas fs">{{ data.quantity }}</p>
     <div class="remove fbas fs" >
-      <i class="fas fa-trash" @click="removeItem(data.id)"></i>
+      <i class="fas fa-trash" @click="removeItem(data.id); $store.commit('decreaseCartQuant')"></i>
      
         <router-link :to="`/details/` + data.id">
          <i class="fas fa-pen"></i>

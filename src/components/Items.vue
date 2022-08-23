@@ -20,7 +20,7 @@
 
         <button
           v-if="cartItem.inCart === false"
-          @click="addTocart(cartItem, index)"
+          @click="addTocart(cartItem, index); $store.commit('increaseCartQuant')"
         >
           Add to Cart <i class="fas fa-shopping-cart"></i>
         </button>

@@ -20,7 +20,7 @@
         <li>
           <router-link to="/cart" class="basketcart"
             >Cart<i class="fas fa-shopping-cart"></i>
-            <div class="num">{{num}}</div>
+            <div class="num">{{$store.state.cartQuant}}</div>
           </router-link>
         </li>
       </ul>

@@ -21,9 +21,9 @@
             <p>${{ dataPrice }}</p>
           </div>
           <div class="increment">
-            <span @click="numRed">-</span>
+            <span @click="numRed(); $store.commit('decreaseCartQuant')">-</span>
             <p>{{ num }}</p>
-            <span @click="numAdd">+</span>
+            <span @click="numAdd(); $store.commit('increaseCartQuant')">+</span>
           </div>
           <button v-if="!datas.inCart" @click="addToCart()">
             Add to cart <i class="fas fa-shopping-cart"></i>
@@ -83,7 +83,7 @@ export default {
   data() {
     return {
       InCart: false,
-      num: 1,
+      num: 0,
       dataPrice: null,
       price: null,
       datas: null,
