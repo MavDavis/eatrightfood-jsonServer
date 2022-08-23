@@ -56,7 +56,7 @@ export default {
 
 <style lang="scss" scoped>
 section {
- height:100vh;
+  height: 100vh;
   .Swiper {
     position: relative;
     width: 100%;
@@ -66,31 +66,36 @@ section {
       position: relative;
       top: 4rem;
       height: calc(100vh - 4rem);
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+
       &.slide1 {
-        background: url("../assets/blackWomanShopping.jpg") no-repeat center center ;
-;
+        background: url("../assets/blackWomanShopping.jpg") no-repeat center
+          center fixed;
+        background-size: cover;
+
       }
       &.slide2 {
-        background: url("../assets/femaleModel.jpg")     no-repeat center center ;
-
+        background: url("../assets/femaleModel.jpg") no-repeat center center
+          fixed;
+        background-size: cover;
+   
       }
       &.slide3 {
-        background: url("../assets/guyModel.jpg")     no-repeat center center ;
-
+        background: url("../assets/guyModel.jpg") no-repeat center center fixed;
+        background-size: cover;
       }
       .opacity {
         position: absolute;
         background: rgba(6, 13, 24, 0.8);
         top: 0;
         left: 0;
-       height: 100%;
+        height: 100%;
         width: 100%;
-      } 
-     .text {
+      }
+      .text {
         display: flex;
         padding: 4rem 5%;
 
@@ -107,7 +112,7 @@ section {
           font-size: 3rem;
           margin-bottom: 1rem;
         }
-        p{
+        p {
           max-width: 50%;
           font-size: 1.6rem;
         }
@@ -116,11 +121,11 @@ section {
             max-width: 90%;
             font-size: 1.1rem;
           }
-          h2{
+          h2 {
             font-size: 2rem;
           }
         }
-      } 
+      }
     }
   }
 }
