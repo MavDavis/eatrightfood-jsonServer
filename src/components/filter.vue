@@ -52,7 +52,7 @@ section {
       padding: 1rem 5%;
       border-top: 0;
       width:25%;
-      height: fit-content;
+      text-align: center;
       cursor: pointer;
       transition: ease .5s;
 &:hover{
