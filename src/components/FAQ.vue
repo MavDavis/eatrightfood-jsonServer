@@ -6,6 +6,8 @@
       :space-between="50"
       :pagination="{ clickable: true }"
       @swiper="onSwiper"
+            :autoPlay="true"
+
       @slideChange="onSlideChange"
     >
       <swiper-slide v-for="slide in swipeArray" :key="slide.name" class="slide">
@@ -30,7 +32,7 @@
 </template>
 <script>
 // import Swiper core and required modules
-import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
+import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from "swiper";
 import "swiper/scss";
 // Import Swiper Vue.js components
 import { Swiper, SwiperSlide } from "swiper/vue";
