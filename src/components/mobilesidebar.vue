@@ -17,8 +17,16 @@
       </div>
 
       <div class="state">
-     <li v-if="$store.state.count" @click="logout(); $store.commit('changeLoggedInState')">Logout</li>
-          <li v-else>Login</li>
+        <li
+          v-if="$store.state.count"
+          @click="
+            logout();
+            $store.commit('changeLoggedInState');
+          "
+        >
+          Logout
+        </li>
+        <li v-els @click="login()">Login</li>
       </div>
     </div>
   </aside>
@@ -33,7 +41,7 @@ export default {
       routes: [
         { name: "Home", to: "/", icon: "fa-home" },
         { name: "Shop", to: "/shop", icon: "fa-tshirt" },
-          { name: "Contact", to: "/Contact", icon: "fa-phone" },
+        { name: "Contact", to: "/Contact", icon: "fa-phone" },
         { name: "Cart", to: "/cart", icon: "fa-shopping-cart" },
       ],
     };
@@ -44,6 +52,9 @@ export default {
     },
     closeBars() {
       this.$emit("closeBarIcon");
+    },
+    login() {
+      this.$router.push({ name: "Login" });
     },
   },
 };

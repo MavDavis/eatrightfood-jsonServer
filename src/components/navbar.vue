@@ -20,7 +20,7 @@
         <li>
           <router-link to="/cart" class="basketcart"
             >Cart<i class="fas fa-shopping-cart"></i>
-            <div class="num">{{$store.state.cartQuant}}</div>
+            <div class="num">{{ $store.state.cartQuant }}</div>
           </router-link>
         </li>
       </ul>
@@ -34,7 +34,15 @@
         </div>
 
         <div class="state">
-          <li v-if="$store.state.count" @click="logout(); $store.commit('changeLoggedInState')">Logout</li>
+          <li
+            v-if="$store.state.count"
+            @click="
+              logout();
+              $store.commit('changeLoggedInState');
+            "
+          >
+            Logout
+          </li>
           <li v-else>Login</li>
         </div>
         <div class="toggler" v-on:click="toggleSidebar">
@@ -68,12 +76,12 @@ import { firebaseAuth } from "../firebase.js";
 export default {
   setup() {
     let quant = JSON.parse(localStorage.getItem("cart"));
-let num = ref(quant ? quant.length : 0)
+    let num = ref(quant ? quant.length : 0);
     let name = ref(
       localStorage.getItem("name") ? localStorage.getItem("name") : "User"
     );
-    
-    return { name, num};
+
+    return { name, num };
   },
   components: {
     Modal,
@@ -103,6 +111,8 @@ let num = ref(quant ? quant.length : 0)
       this.bars = !this.bars;
     },
     login() {
+      this.$router.push({ name: "Login" });
+
       alert("Enter form details below");
     },
     conl() {
@@ -165,21 +175,19 @@ header {
           color: var(--dark);
           transition: ease 0.5s;
 
+          &.basketcart {
+            position: relative;
 
-&.basketcart{
-  position:relative;
-
-  .num{
-    position:absolute;
-    top:-16px;
-    right:-13px;
-    background-color:var(--primary);
-    color:#fff;
-    border-radius:6px;
-    padding:6px;
-
-  }
-}
+            .num {
+              position: absolute;
+              top: -16px;
+              right: -13px;
+              background-color: var(--primary);
+              color: #fff;
+              border-radius: 6px;
+              padding: 6px;
+            }
+          }
           i {
             margin-left: 5px;
           }
