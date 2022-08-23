@@ -72,7 +72,10 @@ let num = ref(quant ? quant.length : 0)
     let name = ref(
       localStorage.getItem("name") ? localStorage.getItem("name") : "User"
     );
-    return { name, num};
+     let log = ref(
+      localStorage.getItem("log")  === "true"
+    );
+    return { name, num, log};
   },
   components: {
     Modal,
@@ -82,7 +85,6 @@ let num = ref(quant ? quant.length : 0)
     return {
       modal: false,
       bars: true,
-      log: true,
     };
   },
   created() {},
@@ -109,8 +111,8 @@ let num = ref(quant ? quant.length : 0)
       console.log(this.name);
     },
     logout() {
-      this.log = false;
       this.modal = true;
+      localStorage.setItem("log", false)
 
       signOut(firebaseAuth)
         .then(() => {

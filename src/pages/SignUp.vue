@@ -93,7 +93,8 @@ createUserWithEmailAndPassword(firebaseAuth, this.email, this.password)
     localStorage.setItem("name", this.firstname)
      self.$router.push({name:"Home"})
       this.loading = true;
-  
+        localStorage.setItem("log", false)
+
   })
   .catch((error) => {
     const errorCode = error.code;

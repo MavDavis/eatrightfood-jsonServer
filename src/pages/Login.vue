@@ -48,6 +48,7 @@ methods:{
 
     this.loading = true;
     let self = this;
+      localStorage.setItem("log", true)
 
 
 signInWithEmailAndPassword(firebaseAuth, this.email, this.password)
