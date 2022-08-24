@@ -1,6 +1,5 @@
 <template>
   <aside>
-    <a href="#" class="logo">Mavs store</a>
 
     <ul>
       <li @click="closeBars" v-for="route in routes" :key="route.to">
@@ -74,21 +73,15 @@ aside {
   z-index: 800;
   display: flex;
   flex-direction: column;
-  .logo {
-    padding: 0 5%;
-    color: var(--dark);
-    font-size: 1.5rem;
-    text-decoration: none;
-    font-weight: bolder;
-    margin: 0 0 2rem 0;
-  }
+
   ul {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    margin: 2rem 0;
 padding:  0 5%;
     li {
-  
+margin: 1.62rem 0;
       a {
         text-decoration: none;
         display: flex;
