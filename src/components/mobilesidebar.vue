@@ -67,7 +67,7 @@ aside {
   position: fixed;
   top: 5rem;
   right: 0;
-  width: 300px;
+  width: 100%;
   height: calc(100vh - 5rem);
   background: var(--light);
   box-shadow: var(--box-shadow);
