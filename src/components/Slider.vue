@@ -14,10 +14,10 @@
       <swiper-slide class="swiper-slide slide1">
         <div class="bg-image bg1">
           <div class="text">
-            <h2>Contact Us for help</h2>
+            <h2>Mavs Store</h2>
             <p>
-              Feel free to contact us at anytime. We will get back to you as
-              soon as we can <i class="fas fa-phone"></i>
+              We are a brand that offers you literally everything you want at a
+              very affordable price, and Just the way you like it.
             </p>
           </div>
           <div class="opacity"></div>
@@ -26,22 +26,16 @@
       <swiper-slide class="swiper- slide2"
         ><div class="bg-image bg2">
           <div class="text">
-            <h2>Contact Us for help</h2>
-            <p>
-              Feel free to contact us at anytime. We will get back to you as
-              soon as we can <i class="fas fa-phone"></i>
-            </p>
+            <h2>Mavs Store</h2>
+            <p>Trustef and relable. Quick delivery.</p>
           </div>
           <div class="opacity"></div></div
       ></swiper-slide>
       <swiper-slide class="swiper-slide slide3"
         ><div class="bg-image bg3">
           <div class="text">
-            <h2>Contact Us for help</h2>
-            <p>
-              Feel free to contact us at anytime. We will get back to you as
-              soon as we can <i class="fas fa-phone"></i>
-            </p>
+            <h2>Mav Store</h2>
+            <p>Easy payment. Unique and Quality Fake Items.</p>
           </div>
           <div class="opacity"></div></div
       ></swiper-slide>
@@ -85,11 +79,11 @@ section {
   position: relative;
   top: 4rem;
   min-height: 100vh;
-         min-width: 100vw !important;
+  min-width: 100vw !important;
 
   .swiper {
     position: relative;
-       min-width: 100vw !important;
+    min-width: 100vw !important;
     width: 100vw;
     height: calc(100vh - 4rem);
     .swiper-slide {
@@ -104,8 +98,8 @@ section {
         background: url(../assets/guyModel.jpg) no-repeat center center;
       }
       .bg-image {
-       min-width: 100vw !important;
-    width: 100vw !important;
+        min-width: 100vw !important;
+        width: 100vw !important;
         height: 100%;
 
         -webkit-background-size: cover;

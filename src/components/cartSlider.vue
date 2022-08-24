@@ -6,6 +6,7 @@
       :space-between="50"
       navigation
       @swiper="onSwiper"
+      :autoplay="true"
       @slideChange="onSlideChange"
       class="slider"
     >
@@ -17,7 +18,7 @@
 </template>
 <script>
 // import Swiper core and required modules
-import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
+import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from "swiper";
 
 // Import Swiper Vue.js components
 import { Swiper, SwiperSlide } from "swiper/vue";
@@ -42,7 +43,7 @@ export default {
     return {
       onSwiper,
       onSlideChange,
-      modules: [Navigation, Pagination, Scrollbar, A11y],
+      modules: [Navigation, Pagination, Scrollbar, A11y, Autoplay],
     };
   },
 };
