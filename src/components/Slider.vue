@@ -27,7 +27,7 @@
         ><div class="bg-image bg2">
           <div class="text">
             <h2>Mavs Store</h2>
-            <p>Trustef and relable. Quick delivery.</p>
+            <p>Trusted and reliable. Quick delivery.</p>
           </div>
           <div class="opacity"></div></div
       ></swiper-slide>
@@ -77,7 +77,7 @@ export default {
 <style scoped lang="scss">
 section {
   position: relative;
-  top: 4rem;
+  top: 3.74rem;
   min-height: 100vh;
   min-width: 100vw !important;
 
@@ -85,7 +85,7 @@ section {
     position: relative;
     min-width: 100vw !important;
     width: 100vw;
-    height: calc(100vh - 4rem);
+    height: calc(100vh - 3.74rem);
     .swiper-slide {
       .bg1 {
         background: url(../assets/blackWomanShopping.jpg) no-repeat center
