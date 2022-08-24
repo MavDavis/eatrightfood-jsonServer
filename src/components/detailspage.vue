@@ -317,7 +317,7 @@ export default {
     display: flex;
     flex-direction: column;
 
-    .col-2 {
+    .colb-2 {
       flex-basis: 100%;
     }
   }
