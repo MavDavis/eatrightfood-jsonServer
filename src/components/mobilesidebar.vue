@@ -74,8 +74,8 @@ aside {
   z-index: 800;
   display: flex;
   flex-direction: column;
-  padding: 2rem;
   .logo {
+    padding: 0 5%;
     color: var(--dark);
     font-size: 1.5rem;
     text-decoration: none;
@@ -86,16 +86,16 @@ aside {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-
+padding:  0 5%;
     li {
   
       a {
         text-decoration: none;
         display: flex;
         font-size: 1.3rem;
-        border-radius: 0.5rem;
-        padding: 5px;
-        margin: 8px;
+   
+     
+      
         color: var(--dark);
         transition: ease 1.5s;
         i {
@@ -125,7 +125,7 @@ aside {
     display: flex;
     flex-direction: column;
     margin: 3rem 0 0 0;
-
+padding:  0 5%;
     .state {
       margin: 2rem 0 0 0;
       li {
