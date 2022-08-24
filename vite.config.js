@@ -8,6 +8,9 @@ import vue from '@vitejs/plugin-vue'
 export default defineConfig(({ command }) => {
   return {
     plugins: [vue()],
+    build: {
+      assetsInlineLimit: '2048' // 2kb
+    },
     resolve: {
       alias: [
         {

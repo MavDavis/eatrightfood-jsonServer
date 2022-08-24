@@ -14,27 +14,27 @@ export default {
       buttonEnable: true,
           dataid:     [
       {
-        image: "@/assets/jogger.webp",
+        image: ".././src/jogger.webp",
         price: "Yellow Joggers",
         id: 1,
       },
       {
-        image: "@/assets/singlet.webp",
+        image: ".././src/singlet.webp",
         price: "Bikini tops",
         id: 1,
       },
       {
-        image: "@/src/assets/soccer-jersey.webp",
+        image: ".././src/soccer-jersey.webp",
         price: "Soccer jersey",
         id: 1,
       },
       {
-        image: "@/assets/jogger2.webp",
+        image: ".././src/jogger2.webp",
         name: "black Joggers",
         id: 1,
       },
       {
-        image: "@/assets/canvas.webp",
+        image: ".././src/canvas.webp",
         name: "Sneakers",
         id: 1,
       },

@@ -13,9 +13,9 @@
           Price:
           <h4>${{ cartItem.price }}</h4>
         </div>
-        <div class="row">
-          <span><i class="fas fa-star"></i>{{ cartItem.rating.rate }}</span>
-          <span @click="like"><i class="fas fa-heart"></i></span>
+        <div class="row px-2">
+          <span class="col-6"><i class="fas fa-star"></i>{{ cartItem.rating.rate }}</span>
+          <span class="col-6" @click="like"><i class="fas fa-heart"></i></span>
         </div>
 
         <button

@@ -1,5 +1,5 @@
 <template>
-  <section class="accessories">
+  <section class="accessories border">
     <swiper
       :modules="modules"
       :slides-per-view="display"
@@ -58,7 +58,6 @@ export default {
 
   .slider {
     background: #fff;
-    border: 1px solid var(--dark);
     margin: 0;
     padding: 2rem 5%;
     width: 100%;

@@ -2,7 +2,7 @@
   <header>
     <div v-if="modal"><Modal /></div>
     <a href="#" class="logo">Mavs Store</a>
-    <nav class="navbar">
+    <nav class="navba">
       <ul>
         <li>
           <router-link to="/">Home<i class="fas fa-home"></i></router-link>
@@ -154,7 +154,7 @@ header {
     text-decoration: none;
     font-weight: bolder;
   }
-  nav.navbar {
+  nav.navba {
     ul {
       display: flex;
       li {
@@ -268,7 +268,7 @@ header {
     }
   }
   @media (max-width: 850px) {
-    nav.navbar {
+    nav.navba {
       display: none;
     }
   }

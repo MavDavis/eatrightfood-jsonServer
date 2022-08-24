@@ -1,11 +1,11 @@
 <template>
   <section>
-    <h3>Filter By Category:</h3>
-    <ul>
+    <h3 class="border px-5">Filter By Category:</h3>
+    <ul class="row rounded ">
       <li
         v-for="(item, index) in items"
         :key="index"
-        class="filter-item"
+        class="border col-lg-3 col-sm-6"
         @click="filterItem(item)"
       >
         {{ item }}
@@ -39,19 +39,14 @@ section {
     color: var(--dark);
     font-size: 1.2rem;
     padding:1em 5%;
-    border: 1px solid var(--dark);
   }
-  ul {
-    display: flex;
+ ul {
     list-style: none;
 
    width:100%;
 
     li {
-      border: 1px solid var(--dark);
-      padding: 1rem 5%;
-      border-top: 0;
-      width:25%;
+      padding: 1rem 5px;
       text-align: center;
       cursor: pointer;
       transition: ease .5s;
