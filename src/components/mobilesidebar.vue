@@ -8,12 +8,18 @@
           >{{ route.name }}<i :class="route.icon" class="fas"></i
         ></router-link>
       </li>
+      <li  @click="closeBars">
+          <router-link to="/cart" class="basketcart"
+            >Cart<i class="fas fa-shopping-cart"></i>
+            <div class="num">{{ $store.state.cartQuant }} </div>
+          </router-link>
+        </li>
     </ul>
 
     <div class="profile">
       <div>
         <span class="circle">{{ nameFirstdigit }}</span>
-        <span class="name">{{ name }}</span>
+        <span class="name">{{ $store.state.username }}</span>
       </div>
 
       <div class="state">
@@ -27,14 +33,13 @@
 <script>
 export default {
   name: "Mobilesidebar",
-  props: ["log", "nameFirstdigit", "name"],
+  props: [ "nameFirstdigit", "name"],
   data() {
     return {
       routes: [
         { name: "Home", to: "/", icon: "fa-home" },
         { name: "Shop", to: "/shop", icon: "fa-tshirt" },
           { name: "Contact", to: "/Contact", icon: "fa-phone" },
-        { name: "Cart", to: "/cart", icon: "fa-shopping-cart" },
       ],
     };
   },
@@ -83,6 +88,7 @@ aside {
     justify-content: space-between;
 
     li {
+  
       a {
         text-decoration: none;
         display: flex;
@@ -99,6 +105,19 @@ aside {
           letter-spacing: 1px;
           border-bottom: 2px solid var(--primary);
         }
+          &.basketcart {
+            position: relative;
+
+            .num {
+              position: absolute;
+              top: -16px;
+              left: 4rem;
+              background-color: var(--primary);
+              color: #fff;
+              border-radius: 6px;
+              padding: 6px;
+            }
+          }
       }
     }
   }
@@ -114,6 +133,8 @@ aside {
         font-weight: bold;
         font-size: 1.2rem;
         cursor: pointer;
+
+          
       }
     }
     .circle {

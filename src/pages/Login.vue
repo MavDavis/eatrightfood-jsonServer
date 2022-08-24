@@ -83,7 +83,8 @@ signInWithEmailAndPassword(firebaseAuth, this.email, this.password)
 }
 
 form {
-  max-width: 420px;
+  width: 420px;
+  max-width: 90%;
   margin: 60px auto 30px;
   background: var(--dark);
   text-align: left;
@@ -139,14 +140,14 @@ form .row .absolute input {
   width: 100%;
   box-sizing: border-box;
 }
-.signup p,
-.signup h2,
 .login p,
 .login h2 {
   text-align: center;
   color: var(--dark);
 }
-.signup p a,
+.login p{
+  margin-bottom: 1rem;
+}
 .login p a {
   color: var(--primary) !important;
 }
@@ -169,6 +170,7 @@ form .row .absolute input {
   cursor: pointer;
 }
 @media(max-width:400px){
+ 
   .login{
     margin-top:1rem;
   }

@@ -6,6 +6,7 @@ export default createStore({
       cartQuant:  JSON.parse(localStorage.getItem("cart"))
       ?  JSON.parse(localStorage.getItem("cart")).reduce((acc, item) => acc + item.quantity, 0)
       : 0,
+      username: localStorage.getItem("name") ? localStorage.getItem("name") : "User"
     };
   },
   mutations: {

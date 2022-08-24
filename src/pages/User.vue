@@ -1,13 +1,21 @@
 <template>
-  
+  <section></section>
 </template>
 
 <script>
 export default {
-name:"User"
+name:"User",
+data(){
+    return{
+
+    }
+}
 }
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+section{
+    min-height: 100vh;
+}
 </style>
+

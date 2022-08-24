@@ -31,7 +31,6 @@ import EachItemInLc from '../components/ReadyForCheckout.vue'
 let CartItems =ref([]);
 const loading =ref(true);
   onMounted(() => {
-    let userinfo = localStorage.getItem("user-info");
   let localItems =  JSON.parse(localStorage.getItem("cart"))
   if(localItems === null || localItems === undefined || localItems.length < 1 ){
        loading.value = true;
@@ -40,11 +39,8 @@ const loading =ref(true);
      loading.value = false;
     CartItems.value = localItems;
   }
-    if (userinfo) {
-      return;
-    } else {
-      router.push("/Login");
-    }})
+ 
+    })
     const RemoveFromStorage = (id) =>{
         let localItems =  JSON.parse(localStorage.getItem("cart"))
       let newLocalItems=  localItems.filter(item => item.id !== id)

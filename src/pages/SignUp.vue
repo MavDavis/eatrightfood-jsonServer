@@ -2,7 +2,6 @@
   <div class="signup">
 <div v-if="loading"><Modal/></div>
     <h2>Sign Up</h2>
-            <p class="phead">Already Have account? <router-link to="/login">Login</router-link></p>
 
     <form class ="form" @submit.prevent="SubmitForm()" >
 
@@ -35,6 +34,8 @@
         
       <input type="submit" class=" btn"  value="SignUp"  >
         </form>
+                    <p class="phead">Already Have account? <router-link to="/login">Login</router-link></p>
+
   </div>
 </template>
 
@@ -135,7 +136,8 @@ createUserWithEmailAndPassword(firebaseAuth, this.email, this.password)
   }
   
 form {
-  max-width: 420px;
+   width: 420px;
+  max-width: 90%;
   margin: 60px auto 30px;
   background: var(--dark);
   text-align: left;
@@ -149,7 +151,6 @@ form .row {
 }
 form .row label,
 form .row p {
-  color: var(--light);
   display: inline-block;
   margin: 15px 0;
   font-size: 0.6em;
@@ -159,7 +160,7 @@ form .row p {
 }
 form .row p {
   display: block;
-  color: var(--dark);
+  color: var(--light);
 }
 form .row input {
   background: transparent;
@@ -192,13 +193,16 @@ form .row .absolute input {
   box-sizing: border-box;
 }
 .signup p,
-.signup h2,
-.login p {
+.signup h2 {
   text-align: center;
   color: var(--dark);
-}.p
+}
+.signup p{
+  margin-bottom: 1rem;
+}
 .signup p a {
   color: var(--primary) !important;
+  
 }
 
 .btn {
