@@ -39,7 +39,7 @@ export default {
         id: 1,
       },
       {
-        image: "@/assets/fullattire.webp",
+        image: ".././src/assets/fullattire.jfif",
         name: "Full sets of sports wear for ladies",
         id: 1,
       },
