@@ -1,8 +1,8 @@
 <template>
   <section>
     <div v-if="!loading">
-      <div class="flex">
-        <div class="right col-2">
+      <div class="flex-b">
+        <div class="right colb-2">
           <div class="big-img">
             <img :src="datas.image" alt="" />
           </div>
@@ -13,7 +13,7 @@
             <div class="small-img"><img :src="datas.image" alt="" /></div>
           </div>
         </div>
-        <div class="left col-2">
+        <div class="left colb-2">
           <h3>Mavs Store</h3>
           <h2>{{ datas.title }}</h2>
           <p>{{ datas.description }}</p>
@@ -188,7 +188,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.flex {
+.flexb {
   img {
     border-radius: 9px;
   }
@@ -199,7 +199,7 @@ export default {
   margin: 3rem 0;
   padding: 0 5%;
 
-  .col-2 {
+  .colb-2 {
     flex-basis: 50%;
 
     &.right {
