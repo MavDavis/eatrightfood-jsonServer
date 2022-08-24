@@ -1,7 +1,7 @@
 <template>
   <section>
     <div v-if="!loading">
-      <div class="flex-b">
+      <div class="flexb">
         <div class="right colb-2">
           <div class="big-img">
             <img :src="datas.image" alt="" />
