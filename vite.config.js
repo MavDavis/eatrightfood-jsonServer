@@ -9,7 +9,7 @@ export default defineConfig(({ command }) => {
   return {
     plugins: [vue()],
     build: {
-      assetsInlineLimit: '2048' // 2kb
+      chunkSizeWarningLimit: 1600,
     },
     resolve: {
       alias: [
