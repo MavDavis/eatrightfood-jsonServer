@@ -22,7 +22,7 @@ const images = ref([
                 image:'.././src/assets/soccer-jersey.webp', price:'Soccer jersey', id:1
             },
              {
-                image:'.././src/assets/jogger2.webp', name:'black Joggers', id:1
+                image:'@/assets/jogger2.webp', name:'black Joggers', id:1
             },
              {
                 image:'.././src/assets/canvas.webp', name:'Sneakers', id:1
