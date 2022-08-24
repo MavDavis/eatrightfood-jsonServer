@@ -14,17 +14,17 @@ export default {
       buttonEnable: true,
           dataid:     [
       {
-        image: ".././src/assets/jogger.webp",
+        image: "@/assets/jogger.webp",
         price: "Yellow Joggers",
         id: 1,
       },
       {
-        image: ".././src/assets/singlet.webp",
+        image: "@/assets/singlet.webp",
         price: "Bikini tops",
         id: 1,
       },
       {
-        image: ".././src/assets/soccer-jersey.webp",
+        image: "@/src/assets/soccer-jersey.webp",
         price: "Soccer jersey",
         id: 1,
       },
@@ -34,12 +34,12 @@ export default {
         id: 1,
       },
       {
-        image: ".././src/assets/canvas.webp",
+        image: "@/assets/canvas.webp",
         name: "Sneakers",
         id: 1,
       },
       {
-        image: ".././src/assets/fullattire.webp",
+        image: "@/assets/fullattire.webp",
         name: "Full sets of sports wear for ladies",
         id: 1,
       },
