@@ -83,7 +83,7 @@ export default {
 <style scoped lang="scss">
 section {
   position: relative;
-  top: 5rem;
+  top: 4rem;
   min-height: 100vh;
          min-width: 100vw !important;
 
@@ -91,7 +91,7 @@ section {
     position: relative;
        min-width: 100vw !important;
     width: 100vw;
-    height: calc(100vh - 5rem);
+    height: calc(100vh - 4rem);
     .swiper-slide {
       .bg1 {
         background: url(../assets/blackWomanShopping.jpg) no-repeat center
