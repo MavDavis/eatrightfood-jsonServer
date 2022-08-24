@@ -67,7 +67,7 @@ aside {
   top: 5rem;
   right: 0;
   width: 100%;
-  height: calc(100vh - 5rem);
+  height: calc(100vh - 4.5rem);
   background: var(--light);
   box-shadow: var(--box-shadow);
   z-index: 800;
@@ -81,7 +81,7 @@ aside {
     margin: 2rem 0;
 padding:  0 5%;
     li {
-margin: 1.62rem 0;
+margin: 1.2rem 0;
       a {
         text-decoration: none;
         display: flex;
