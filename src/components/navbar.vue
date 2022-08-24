@@ -29,7 +29,13 @@
     <div class="icons">
       <div class="profile">
         <div>
-          <span class="circle">{{ nameFirstdigit }}</span>
+          <span v-if="mediaquery">
+            <router-link to="/cart" class="basketcart "
+              ><i class="fas fa-shopping-cart"></i>
+              <div class="num">{{ $store.state.cartQuant }}</div>
+            </router-link>
+          </span>
+          <span v-else class="circle">{{ nameFirstdigit }}</span>
           <span class="name">{{ Username }}</span>
         </div>
 
@@ -76,11 +82,12 @@ export default {
   setup() {
     let quant = JSON.parse(localStorage.getItem("cart"));
     let num = ref(quant ? quant.length : 0);
+    let mediaquery = ref(false)
     let name = ref(
       localStorage.getItem("name") ? localStorage.getItem("name") : "User"
     );
 
-    return { name, num };
+    return { name, num, mediaquery};
   },
   components: {
     Modal,
@@ -92,7 +99,9 @@ export default {
       bars: true,
     };
   },
-  created() {},
+  created() {
+     window.addEventListener("resize", this.resizeHandler)
+  },
 
   computed: {
     Username() {
@@ -106,6 +115,15 @@ export default {
     },
   },
   methods: {
+    resizeHandler(){
+if(window.innerWidth < 850){
+  this.mediaquery = true;
+}else{
+  this.mediaquery = false
+    this.bars = true;
+
+}
+    },
     toggleSidebar() {
       this.bars = !this.bars;
     },
@@ -212,7 +230,44 @@ header {
       display: flex;
       align-items: center;
       justify-content: space-between;
+span{
 
+        a.router-link-active {
+          background-color: var(--primary);
+          color: #fff;
+        }
+        a {
+          text-decoration: none;
+          display: flex;
+          font-size: 1.3rem;
+          border-radius: 0.5rem;
+          padding: 5px;
+          margin: 8px;
+          color: var(--dark);
+          transition: ease 0.5s;
+
+          &.basketcart {
+            position: relative;
+margin-right: 1rem;
+            .num {
+              position: absolute;
+              top: -16px;
+              right: -13px;
+              background-color: var(--primary);
+              color: #fff;
+              border-radius: 6px;
+              padding: 6px;
+            }
+          }
+          i {
+            margin-left: 5px;
+          }
+          &:hover {
+            background-color: var(--primary);
+            color: #fff;
+          }
+        }
+      }
       .state {
         margin-left: 1rem;
         li {
@@ -250,9 +305,13 @@ header {
         }
       }
       .profile {
+        
         .name,
         .state {
           display: none;
+        }
+        .sm-cart{
+          display: block;
         }
         .circle {
           margin-right: 1rem;
