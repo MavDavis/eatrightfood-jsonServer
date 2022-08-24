@@ -6,7 +6,7 @@
       :space-between="50"
       :pagination="{ clickable: true }"
       @swiper="onSwiper"
-            :autoPlay="true"
+            :autoplay="true"
 
       @slideChange="onSlideChange"
     >
@@ -61,22 +61,27 @@ export default {
       {
         name: "CEO_EatRightFood",
         img: "../assets/img1",
-        post: "Well, I've been in the food industry for a while but i must say that Eat right food are very good at what they do . They are interested in the customer's well-being",
+        post: " They are interested in the customer's well-being",
+      },
+            {
+        name: "David",
+        img: "../assets/img1",
+        post: "lorem ipsum donor fosei tipai",
+      },
+      {
+        name: "Marv",
+        img: "../assets/img1",
+        post: " in the customer's well-being",
+      },
+      {
+        name: "Jeyi",
+        img: "../assets/img1",
+        post: "Super awesome!!",
       },
       {
         name: "CEO_EatRightFood",
         img: "../assets/img1",
-        post: "Well, I've been in the food industry for a while but i must say that Eat right food are very good at what they do . They are interested in the customer's well-being",
-      },
-      {
-        name: "CEO_EatRightFood",
-        img: "../assets/img1",
-        post: "Well, I've been in the food industry for a while but i must say that Eat right food are very good at what they do . They are interested in the customer's well-being",
-      },
-      {
-        name: "CEO_EatRightFood",
-        img: "../assets/img1",
-        post: "Well, I've been in the food industry for a while but i must say that Eat right food are very good at what they do . They are interested in the customer's well-being",
+        post: "Whatever you think.",
       },
     ]);
 
@@ -85,7 +90,7 @@ export default {
       onSlideChange,
       swipeArray,
       slidelength,
-      modules: [Navigation, Pagination, Scrollbar, A11y],
+      modules: [Navigation, Pagination, Scrollbar, A11y, Autoplay],
     };
   },
   props: ["display"],
