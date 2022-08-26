@@ -159,7 +159,7 @@ header {
   left: 0;
   right: 0;
   background: var(--light);
-  padding: .6rem 5%;
+  padding: .6rem 5% .4rem 5%; 
   display: flex;
   align-items: center;
   justify-content: space-between;
