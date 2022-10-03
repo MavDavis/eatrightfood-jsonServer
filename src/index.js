@@ -12,6 +12,9 @@ import Payment from './pages/payment.vue'
 import User from './pages/User.vue'
 const router = createRouter({
     history: createWebHistory(),
+      scrollBehavior(to, from){
+    return{top:0, behavior:'smooth'}
+  },
     routes: [{
             path: "/",
             component: Home,
